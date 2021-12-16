@@ -20,6 +20,39 @@ namespace CinemaSystem.Data
 
         public DbSet<Movie> Movies{ get; set; }
 
-        public int MyProperty { get; set; }
+        public DbSet<Actor> Actors { get; set; }
+
+        public DbSet<MovieActor> MovieActors { get; set; }
+
+        public DbSet<ActorRole> ActorRoles { get; set; }
+
+        public DbSet<Country> Countries { get; set; }
+
+        public DbSet<Gender> Genders { get; set; }
+
+        public DbSet<CinemaTheater> CinemaTheaters { get; set; }
+
+        public DbSet<CinemaTheaterMovie> CinemaTheaterMovies { get; set; }
+
+        public DbSet<Cinema> Cinemas { get; set; }
+
+        public DbSet<Director> Directors { get; set; }
+
+        public DbSet<MovieDirector> MovieDirectors { get; set; }
+
+        public DbSet<TheaterChair> TheaterChairs { get; set; }
+
+        public DbSet<MovieTicket> MovieTickets { get; set; }
+
+        public DbSet<Province> Provinces { get; set; }
+
+        public DbSet<District> Districts { get; set; }
+
+        public DbSet<MovieSession> MovieSessions { get; set; }
+
+
+
+
+
     }
 }
