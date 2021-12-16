@@ -18,7 +18,7 @@ namespace CinemaSystem.Data
 
         public DbSet<Language> Languages { get; set; }
 
-        public DbSet<Movie> Movies{ get; set; }
+        public DbSet<Movie> Movies { get; set; }
 
         public DbSet<Actor> Actors { get; set; }
 
