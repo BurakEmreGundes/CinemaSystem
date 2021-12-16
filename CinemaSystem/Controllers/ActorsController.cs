@@ -50,9 +50,9 @@ namespace CinemaSystem.Controllers
         // GET: Actors/Create
         public IActionResult Create()
         {
-            ViewData["ActorRoleId"] = new SelectList(_context.ActorRoles, "Id", "Id");
-            ViewData["CountryId"] = new SelectList(_context.Countries, "Id", "Id");
-            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id");
+            ViewData["ActorRoleId"] = new SelectList(_context.ActorRoles, "Id", "RoleType");
+            ViewData["CountryId"] = new SelectList(_context.Countries, "Id", "CountryName");
+            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "GenderType");
             return View();
         }
 
@@ -69,9 +69,9 @@ namespace CinemaSystem.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ActorRoleId"] = new SelectList(_context.ActorRoles, "Id", "Id", actor.ActorRoleId);
-            ViewData["CountryId"] = new SelectList(_context.Countries, "Id", "Id", actor.CountryId);
-            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id", actor.GenderId);
+            ViewData["ActorRoleId"] = new SelectList(_context.ActorRoles, "Id", "RoleType", actor.ActorRoleId);
+            ViewData["CountryId"] = new SelectList(_context.Countries, "Id", "CountryName", actor.CountryId);
+            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "GenderType", actor.GenderId);
             return View(actor);
         }
 
@@ -88,9 +88,9 @@ namespace CinemaSystem.Controllers
             {
                 return NotFound();
             }
-            ViewData["ActorRoleId"] = new SelectList(_context.ActorRoles, "Id", "Id", actor.ActorRoleId);
-            ViewData["CountryId"] = new SelectList(_context.Countries, "Id", "Id", actor.CountryId);
-            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id", actor.GenderId);
+            ViewData["ActorRoleId"] = new SelectList(_context.ActorRoles, "Id", "RoleType", actor.ActorRoleId);
+            ViewData["CountryId"] = new SelectList(_context.Countries, "Id", "CountryName", actor.CountryId);
+            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "GenderType", actor.GenderId);
             return View(actor);
         }
 
@@ -126,9 +126,9 @@ namespace CinemaSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ActorRoleId"] = new SelectList(_context.ActorRoles, "Id", "Id", actor.ActorRoleId);
-            ViewData["CountryId"] = new SelectList(_context.Countries, "Id", "Id", actor.CountryId);
-            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id", actor.GenderId);
+            ViewData["ActorRoleId"] = new SelectList(_context.ActorRoles, "Id", "RoleType", actor.ActorRoleId);
+            ViewData["CountryId"] = new SelectList(_context.Countries, "Id", "CountryName", actor.CountryId);
+            ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "GenderType", actor.GenderId);
             return View(actor);
         }
 

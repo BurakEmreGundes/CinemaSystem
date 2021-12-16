@@ -7,16 +7,20 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CinemaSystem.Data;
 using CinemaSystem.Models;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace CinemaSystem.Controllers
 {
     public class MoviesController : Controller
     {
+        private readonly IWebHostEnvironment _hostEnvironment;
         private readonly ApplicationDbContext _context;
 
-        public MoviesController(ApplicationDbContext context)
+        public MoviesController(ApplicationDbContext context,IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            _hostEnvironment = hostEnvironment;
         }
 
         // GET: Movies
@@ -49,8 +53,8 @@ namespace CinemaSystem.Controllers
         // GET: Movies/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id");
-            ViewData["LanguageId"] = new SelectList(_context.Languages, "Id", "Id");
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "CategoryName");
+            ViewData["LanguageId"] = new SelectList(_context.Languages, "Id", "LanguageName");
             return View();
         }
 
@@ -63,12 +67,28 @@ namespace CinemaSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                /* Resim ekleme kodu */
+                string webRootPath = _hostEnvironment.WebRootPath;
+                var files = HttpContext.Request.Form.Files;
+
+                string fileName = Guid.NewGuid().ToString();
+                var uploads = Path.Combine(webRootPath, @"images\posterimages");
+                var extension = Path.GetExtension(files[0].FileName);
+
+                using (var fileStream = new FileStream(Path.Combine(uploads, fileName + extension),FileMode.Create))
+                {
+                    files[0].CopyTo(fileStream);
+                };
+                movie.Poster = @"\images\posterimages\" + fileName + extension;
+
+                /* Resim ekleme kodu */
+                
                 _context.Add(movie);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", movie.CategoryId);
-            ViewData["LanguageId"] = new SelectList(_context.Languages, "Id", "Id", movie.LanguageId);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "CategoryName", movie.CategoryId);
+            ViewData["LanguageId"] = new SelectList(_context.Languages, "Id", "LanguageName", movie.LanguageId);
             return View(movie);
         }
 

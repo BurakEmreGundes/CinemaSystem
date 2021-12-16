@@ -4,14 +4,16 @@ using CinemaSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CinemaSystem.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211216171505_SinemaSalonuGosterilenFilmG")]
+    partial class SinemaSalonuGosterilenFilmG
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,9 +45,6 @@ namespace CinemaSystem.Data.Migrations
 
                     b.Property<int?>("GenderId")
                         .HasColumnType("int");
-
-                    b.Property<string>("NameSurname")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -164,9 +163,6 @@ namespace CinemaSystem.Data.Migrations
                     b.Property<DateTime>("StartedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("Subtitle")
-                        .HasColumnType("bit");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CinemaTheaterId");
@@ -183,8 +179,8 @@ namespace CinemaSystem.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CountryName")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("CountryName")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -212,9 +208,6 @@ namespace CinemaSystem.Data.Migrations
 
                     b.Property<int?>("GenderId")
                         .HasColumnType("int");
-
-                    b.Property<string>("NameSurname")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

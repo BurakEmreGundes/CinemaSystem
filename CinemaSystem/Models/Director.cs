@@ -21,5 +21,12 @@ namespace CinemaSystem.Models
 
         public DateTime DateOfBirth { get; set; }
 
+        public string NameSurname
+        {
+            get
+            { return DirectorName + " " + DirectorSurname; }
+            set { }
+        }
+
     }
 }

@@ -61,7 +61,7 @@
                 @Html.DisplayFor(modelItem => item.Subject)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Poster)
+                <img src="@Url.Content(item.Poster)" class="d-block w-100" asp-append-version="true" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Fragment)

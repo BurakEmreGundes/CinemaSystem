@@ -16,6 +16,9 @@
                 @Html.DisplayNameFor(model => model.Movie)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Actor.ActorRole)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Actor)
             </th>
             <th>
@@ -28,10 +31,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Movie.Id)
+                @Html.DisplayFor(modelItem => item.Movie.MovieName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Actor.Id)
+                @Html.DisplayFor(modelItem => item.Actor.ActorRole.RoleType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Actor.NameSurname)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Order)

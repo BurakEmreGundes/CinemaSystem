@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -19,11 +20,15 @@ namespace CinemaSystem.Models
         public int? GenderId { get; set; }
         public Gender Gender { get; set; }
 
+        [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
 
         public int ActorRoleId { get; set; }
         public ActorRole ActorRole { get; set; }
 
-
+        public string NameSurname {
+            get
+            { return ActorName + " " + ActorSurname; }
+            set { } }
     }
 }

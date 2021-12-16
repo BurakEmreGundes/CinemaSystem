@@ -1,5 +1,7 @@
-﻿using CinemaSystem.Models;
+﻿using CinemaSystem.Data;
+using CinemaSystem.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -11,16 +13,21 @@ namespace CinemaSystem.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ApplicationDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
+
+            var db = _context.Movies
+                 .Include(m => m.Language)
+                 .Include(m => m.Category);
+
+            return View(db.ToList());
         }
 
         public IActionResult Privacy()

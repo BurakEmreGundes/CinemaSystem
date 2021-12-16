@@ -9,6 +9,6 @@ namespace CinemaSystem.Models
     {
         public int Id { get; set; }
 
-        public int CountryName { get; set; }
+        public string CountryName { get; set; }
     }
 }

@@ -49,8 +49,8 @@ namespace CinemaSystem.Controllers
         // GET: MovieActors/Create
         public IActionResult Create()
         {
-            ViewData["ActorId"] = new SelectList(_context.Actors, "Id", "Id");
-            ViewData["MovieId"] = new SelectList(_context.Movies, "Id", "Id");
+            ViewData["ActorId"] = new SelectList(_context.Actors, "Id", "NameSurname");
+            ViewData["MovieId"] = new SelectList(_context.Movies, "Id", "MovieName");
             return View();
         }
 
@@ -67,8 +67,8 @@ namespace CinemaSystem.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ActorId"] = new SelectList(_context.Actors, "Id", "Id", movieActor.ActorId);
-            ViewData["MovieId"] = new SelectList(_context.Movies, "Id", "Id", movieActor.MovieId);
+            ViewData["ActorId"] = new SelectList(_context.Actors, "Id", "NameSurname", movieActor.ActorId);
+            ViewData["MovieId"] = new SelectList(_context.Movies, "Id", "MovieName", movieActor.MovieId);
             return View(movieActor);
         }
 
@@ -85,8 +85,8 @@ namespace CinemaSystem.Controllers
             {
                 return NotFound();
             }
-            ViewData["ActorId"] = new SelectList(_context.Actors, "Id", "Id", movieActor.ActorId);
-            ViewData["MovieId"] = new SelectList(_context.Movies, "Id", "Id", movieActor.MovieId);
+            ViewData["ActorId"] = new SelectList(_context.Actors, "Id", "NameSurname", movieActor.ActorId);
+            ViewData["MovieId"] = new SelectList(_context.Movies, "Id", "MovieName", movieActor.MovieId);
             return View(movieActor);
         }
 
@@ -122,8 +122,8 @@ namespace CinemaSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ActorId"] = new SelectList(_context.Actors, "Id", "Id", movieActor.ActorId);
-            ViewData["MovieId"] = new SelectList(_context.Movies, "Id", "Id", movieActor.MovieId);
+            ViewData["ActorId"] = new SelectList(_context.Actors, "Id", "NameSurname", movieActor.ActorId);
+            ViewData["MovieId"] = new SelectList(_context.Movies, "Id", "MovieName", movieActor.MovieId);
             return View(movieActor);
         }
 

@@ -49,8 +49,8 @@ namespace CinemaSystem.Controllers
         // GET: Cinemas/Create
         public IActionResult Create()
         {
-            ViewData["DistrictId"] = new SelectList(_context.Districts, "Id", "Id");
-            ViewData["ProvinceId"] = new SelectList(_context.Provinces, "Id", "Id");
+            ViewData["DistrictId"] = new SelectList(_context.Districts, "Id", "DistrictName");
+            ViewData["ProvinceId"] = new SelectList(_context.Provinces, "Id", "ProvinceName");
             return View();
         }
 
@@ -67,8 +67,8 @@ namespace CinemaSystem.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DistrictId"] = new SelectList(_context.Districts, "Id", "Id", cinema.DistrictId);
-            ViewData["ProvinceId"] = new SelectList(_context.Provinces, "Id", "Id", cinema.ProvinceId);
+            ViewData["DistrictId"] = new SelectList(_context.Districts, "Id", "DistrictName", cinema.DistrictId);
+            ViewData["ProvinceId"] = new SelectList(_context.Provinces, "Id", "ProvinceName", cinema.ProvinceId);
             return View(cinema);
         }
 
@@ -85,8 +85,8 @@ namespace CinemaSystem.Controllers
             {
                 return NotFound();
             }
-            ViewData["DistrictId"] = new SelectList(_context.Districts, "Id", "Id", cinema.DistrictId);
-            ViewData["ProvinceId"] = new SelectList(_context.Provinces, "Id", "Id", cinema.ProvinceId);
+            ViewData["DistrictId"] = new SelectList(_context.Districts, "Id", "DistrictName", cinema.DistrictId);
+            ViewData["ProvinceId"] = new SelectList(_context.Provinces, "Id", "ProvinceName", cinema.ProvinceId);
             return View(cinema);
         }
 
@@ -122,8 +122,8 @@ namespace CinemaSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DistrictId"] = new SelectList(_context.Districts, "Id", "Id", cinema.DistrictId);
-            ViewData["ProvinceId"] = new SelectList(_context.Provinces, "Id", "Id", cinema.ProvinceId);
+            ViewData["DistrictId"] = new SelectList(_context.Districts, "Id", "DistrictName", cinema.DistrictId);
+            ViewData["ProvinceId"] = new SelectList(_context.Provinces, "Id", "ProvinceName", cinema.ProvinceId);
             return View(cinema);
         }
 
