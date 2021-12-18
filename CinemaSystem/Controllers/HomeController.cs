@@ -23,11 +23,13 @@ namespace CinemaSystem.Controllers
         public IActionResult Index()
         {
 
-            var db = _context.Movies
+           ViewBag.movies=_context.Movies
                  .Include(m => m.Language)
-                 .Include(m => m.Category);
+                 .Include(m => m.Category).ToList();
 
-            return View(db.ToList());
+           ViewBag.categories = _context.Categories.ToList(); ;
+
+            return View();
         }
 
         public IActionResult Privacy()

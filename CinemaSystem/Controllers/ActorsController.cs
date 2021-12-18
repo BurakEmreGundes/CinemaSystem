@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CinemaSystem.Data;
 using CinemaSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CinemaSystem.Controllers
 {
@@ -47,6 +48,7 @@ namespace CinemaSystem.Controllers
             return View(actor);
         }
 
+        [Authorize]
         // GET: Actors/Create
         public IActionResult Create()
         {

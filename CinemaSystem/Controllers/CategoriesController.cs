@@ -42,13 +42,14 @@ namespace CinemaSystem.Controllers
                 return NotFound();
             }
 
-            return View(category);
+            return RedirectToAction("CategoryCreate", "Admin");
         }
 
         // GET: Categories/Create
         public IActionResult Create()
         {
-            return View();
+            //return View();
+            return RedirectToAction("CategoryCreate","Admin");
         }
 
         // POST: Categories/Create
@@ -62,9 +63,11 @@ namespace CinemaSystem.Controllers
             {
                 _context.Add(category);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                // return RedirectToAction(nameof(Index));
+                return RedirectToAction("CategoryCreate", "Admin");
             }
-            return View(category);
+            //return View(category);
+            return RedirectToAction("CategoryCreate", "Admin");
         }
 
         // GET: Categories/Edit/5

@@ -34,7 +34,7 @@ namespace CinemaSystem
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<Customer>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddRoles<IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
 
        

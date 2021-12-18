@@ -9,38 +9,60 @@
 </head>
 <body>
     <header>
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container px-5">
-                <a class="navbar-brand" href="index.html">Start Bootstrap</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
-                        <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-                        <li class="nav-item"><a asp-controller="Categories" asp-action="Index" class="nav-link">Kategoriler</a></li>
-                        <li class="nav-item"><a asp-controller="Visions" asp-action="Index" class="nav-link">Vizyondakiler</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                <li><a class="dropdown-item" href="blog-home.html">Blog Home</a></li>
-                                <li><a class="dropdown-item" href="blog-post.html">Blog Post</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Portfolio</a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                                <li><a class="dropdown-item" href="portfolio-overview.html">Portfolio Overview</a></li>
-                                <li><a class="dropdown-item" href="portfolio-item.html">Portfolio Item</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary" >
+            <a class="navbar-brand text-white font-weight-bold" style="font-size:22px;" href="#">Movie Center</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-black" style="font-size:16px; color:black; font-weight:700;" asp-controller="Home" asp-action="Index">Anasayfa <span class="sr-only">(current)</span></a>
+                    </li> 
+                    <li class="nav-item">
+                        <a class="nav-link text-black" style="font-size: 16px; color: black; font-weight: 700; " asp-controller="Visions" asp-action="Index">Vizyondakiler</a>
+                    </li>
+
+                </ul>
+                <span class="navbar-text">
+                    <partial name="_LoginPartial" />
+                </span>
             </div>
         </nav>
+        <!-- Navigation-->
+        <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+         <div class="container px-5">
+             <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                     <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+                     <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                     <li class="nav-item"><a asp-controller="Categories" asp-action="Index" class="nav-link">Kategoriler</a></li>
+                     <li class="nav-item"><a asp-controller="Visions" asp-action="Index" class="nav-link">Vizyondakiler</a></li>
+                     <li class="nav-item dropdown">
+                         <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
+                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
+                             <li><a class="dropdown-item" href="blog-home.html">Blog Home</a></li>
+                             <li><a class="dropdown-item" href="blog-post.html">Blog Post</a></li>
+                         </ul>
+                     </li>
+                     <li class="nav-item dropdown">
+                         <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Portfolio</a>
+                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
+                             <li><a class="dropdown-item" href="portfolio-overview.html">Portfolio Overview</a></li>
+                             <li><a class="dropdown-item" href="portfolio-item.html">Portfolio Item</a></li>
+                         </ul>
+                     </li>
+                     <partial name="_LoginPartial" />
+                 </ul>
+             </div>
+         </div>
+     </nav> -->
     </header>
     <div class="container">
         <main role="main" class="pb-3">
