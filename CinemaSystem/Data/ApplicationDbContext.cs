@@ -7,7 +7,7 @@ using System.Text;
 
 namespace CinemaSystem.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<Customer>
+    public class ApplicationDbContext : IdentityDbContext<Customer,CustomerRole,string>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

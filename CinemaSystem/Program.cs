@@ -1,5 +1,7 @@
+using CinemaSystem.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
@@ -13,7 +15,15 @@ namespace CinemaSystem
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+            Console.WriteLine("Sunucu Baþlatýlýyor...");
+
+            var scope = host.Services.CreateScope();
+            var services = scope.ServiceProvider;
+            SeedData.Initialize(services);
+
+
+            host.Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
