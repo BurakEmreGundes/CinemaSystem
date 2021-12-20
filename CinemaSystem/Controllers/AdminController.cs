@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace CinemaSystem.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class AdminController : Controller
     {
-        [Authorize]
+       
         public IActionResult Index()
         {
             return View();
