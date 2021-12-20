@@ -27,7 +27,9 @@ namespace CinemaSystem.Controllers
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Movies.Include(m => m.Category).Include(m => m.Language);
-            return View(await applicationDbContext.ToListAsync());
+            var movies = await applicationDbContext.ToListAsync();
+            ViewBag.movies = movies as ICollection<Movie>;
+            return RedirectToAction("MovieList", "Admin");
         }
 
         // GET: Movies/Details/5
@@ -85,11 +87,11 @@ namespace CinemaSystem.Controllers
                 
                 _context.Add(movie);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+               return RedirectToAction("MovieCreate", "Admin");
             }
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "CategoryName", movie.CategoryId);
             ViewData["LanguageId"] = new SelectList(_context.Languages, "Id", "LanguageName", movie.LanguageId);
-            return View(movie);
+             return RedirectToAction("MovieCreate", "Admin");
         }
 
         // GET: Movies/Edit/5
@@ -107,7 +109,7 @@ namespace CinemaSystem.Controllers
             }
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", movie.CategoryId);
             ViewData["LanguageId"] = new SelectList(_context.Languages, "Id", "Id", movie.LanguageId);
-            return View(movie);
+            return RedirectToAction("MovieEdit", "Admin");
         }
 
         // POST: Movies/Edit/5
@@ -140,11 +142,11 @@ namespace CinemaSystem.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("MovieList", "Admin");
             }
             ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", movie.CategoryId);
             ViewData["LanguageId"] = new SelectList(_context.Languages, "Id", "Id", movie.LanguageId);
-            return View(movie);
+            return RedirectToAction("MovieEdit", "Admin");
         }
 
         // GET: Movies/Delete/5
@@ -164,7 +166,8 @@ namespace CinemaSystem.Controllers
                 return NotFound();
             }
 
-            return View(movie);
+            // return View(movie);
+            return RedirectToAction("MovieDelete", "Admin");
         }
 
         // POST: Movies/Delete/5
@@ -175,7 +178,7 @@ namespace CinemaSystem.Controllers
             var movie = await _context.Movies.FindAsync(id);
             _context.Movies.Remove(movie);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("MovieList", "Admin");
         }
 
         private bool MovieExists(int id)
