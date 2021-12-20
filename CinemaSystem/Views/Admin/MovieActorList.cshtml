@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CinemaSystem.Models.MovieActor>
+
+@{ ViewData["Title"] = "Index";
+    Layout = "_AdminLayout";}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="MovieActorCreate">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Movie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Actor.ActorRole)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Actor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Movie.MovieName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Actor.ActorRole.RoleType)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Actor.NameSurname)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Order)
+    </td>
+    <td>
+        <a asp-action="MovieActorEdit" asp-route-id="@item.Id">Edit</a> |
+        <a asp-action="MovieActorDetails" asp-route-id="@item.Id">Details</a> |
+        <a asp-action="MovieActorDelete" asp-route-id="@item.Id">Delete</a>
+    </td>
+</tr>}
+    </tbody>
+</table>

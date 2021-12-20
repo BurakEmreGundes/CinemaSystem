@@ -65,11 +65,11 @@ namespace CinemaSystem.Controllers
             {
                 _context.Add(director);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("DirectorList", "Admin");
             }
             ViewData["CountryId"] = new SelectList(_context.Countries, "Id", "Id", director.CountryId);
             ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id", director.GenderId);
-            return View(director);
+            return RedirectToAction("DirectorList", "Admin");
         }
 
         // GET: Directors/Edit/5
@@ -120,11 +120,11 @@ namespace CinemaSystem.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("DirectorList", "Admin");
             }
             ViewData["CountryId"] = new SelectList(_context.Countries, "Id", "Id", director.CountryId);
             ViewData["GenderId"] = new SelectList(_context.Genders, "Id", "Id", director.GenderId);
-            return View(director);
+            return RedirectToAction("DirectorList", "Admin");
         }
 
         // GET: Directors/Delete/5
@@ -155,7 +155,7 @@ namespace CinemaSystem.Controllers
             var director = await _context.Directors.FindAsync(id);
             _context.Directors.Remove(director);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("DirectorList", "Admin");
         }
 
         private bool DirectorExists(int id)

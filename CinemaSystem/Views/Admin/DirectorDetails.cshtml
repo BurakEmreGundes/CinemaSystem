@@ -1,0 +1,47 @@
+﻿@model CinemaSystem.Models.Director
+
+@{ ViewData["Title"] = "Details";
+    Layout = "_AdminLayout";}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Director</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DirectorName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DirectorName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DirectorSurname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DirectorSurname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gender.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Country.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="DirectorEdit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="DirectorList">Back to List</a>
+</div>

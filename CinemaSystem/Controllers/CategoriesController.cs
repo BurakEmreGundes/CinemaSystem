@@ -49,7 +49,7 @@ namespace CinemaSystem.Controllers
         public IActionResult Create()
         {
             //return View();
-            return RedirectToAction("CategoryCreate","Admin");
+            return RedirectToAction("CategoryList","Admin");
         }
 
         // POST: Categories/Create
@@ -64,10 +64,10 @@ namespace CinemaSystem.Controllers
                 _context.Add(category);
                 await _context.SaveChangesAsync();
                 // return RedirectToAction(nameof(Index));
-                return RedirectToAction("CategoryCreate", "Admin");
+                return RedirectToAction("CategoryList", "Admin");
             }
             //return View(category);
-            return RedirectToAction("CategoryCreate", "Admin");
+            return RedirectToAction("CategoryList", "Admin");
         }
 
         // GET: Categories/Edit/5
@@ -116,9 +116,10 @@ namespace CinemaSystem.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("CategoryList", "Admin");
             }
-            return View(category);
+            //return View(category);
+            return RedirectToAction("CategoryList", "Admin");
         }
 
         // GET: Categories/Delete/5
@@ -147,7 +148,7 @@ namespace CinemaSystem.Controllers
             var category = await _context.Categories.FindAsync(id);
             _context.Categories.Remove(category);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("CategoryList", "Admin");
         }
 
         private bool CategoryExists(int id)
