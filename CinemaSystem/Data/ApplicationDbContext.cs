@@ -50,6 +50,10 @@ namespace CinemaSystem.Data
 
         public DbSet<MovieSession> MovieSessions { get; set; }
 
+        public DbSet<Comment> Comments { get; set; }
+
+       
+
 
 
 
