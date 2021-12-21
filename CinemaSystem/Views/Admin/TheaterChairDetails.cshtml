@@ -1,0 +1,29 @@
+﻿@model CinemaSystem.Models.TheaterChair
+
+@{ ViewData["Title"] = "Details";
+    Layout = "_AdminLayout";}
+
+<h1>Details</h1>
+
+<div>
+    <h4>TheaterChair</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CinemaTheater)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CinemaTheater.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChairCode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChairCode)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="TheaterChairEdit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="TheaterChairList">Back to List</a>
+</div>

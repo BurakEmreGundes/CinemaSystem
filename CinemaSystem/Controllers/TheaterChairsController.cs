@@ -63,10 +63,10 @@ namespace CinemaSystem.Controllers
             {
                 _context.Add(theaterChair);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("TheaterChairList", "Admin");
             }
             ViewData["CinemaTheaterId"] = new SelectList(_context.CinemaTheaters, "Id", "Id", theaterChair.CinemaTheaterId);
-            return View(theaterChair);
+            return RedirectToAction("TheaterChairList", "Admin");
         }
 
         // GET: TheaterChairs/Edit/5
@@ -116,10 +116,10 @@ namespace CinemaSystem.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("TheaterChairList", "Admin");
             }
             ViewData["CinemaTheaterId"] = new SelectList(_context.CinemaTheaters, "Id", "Id", theaterChair.CinemaTheaterId);
-            return View(theaterChair);
+            return RedirectToAction("TheaterChairList", "Admin");
         }
 
         // GET: TheaterChairs/Delete/5
@@ -149,7 +149,7 @@ namespace CinemaSystem.Controllers
             var theaterChair = await _context.TheaterChairs.FindAsync(id);
             _context.TheaterChairs.Remove(theaterChair);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+             return RedirectToAction("TheaterChairList", "Admin");
         }
 
         private bool TheaterChairExists(int id)
