@@ -27,6 +27,8 @@ namespace CinemaSystem.Data.DTOs
 
         public int MovieID { get; set; }
 
+        public double? IMDB_Puan { get; set; }
+
         public string Poster { get; set; }
 
         public string Fragment { get; set; }

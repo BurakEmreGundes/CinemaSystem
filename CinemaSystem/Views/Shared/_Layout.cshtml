@@ -1,83 +1,109 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="">
     <title>@ViewData["Title"] - CinemaSystem</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/Home/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Home/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,600,700" rel="stylesheet">
 </head>
 <body>
-    <header>
+    <!-- HEADER =============================-->
+    <header class="item header margin-top-0">
+        <div class="wrapper">
+            <nav role="navigation" class="navbar navbar-white navbar-embossed navbar-lg navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button data-target="#navbar-collapse-02" data-toggle="collapse" class="navbar-toggle" type="button">
+                            <i class="fa fa-bars"></i>
+                            <span class="sr-only">Toggle navigation</span>
+                        </button>
+                        <a href="index.html" class="navbar-brand brand"> SCORILO </a>
+                    </div>
+                    <div id="navbar-collapse-02" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="propClone"><a href="index.html">Anasayfa</a></li>
+                            <li class="propClone"><a href="">Vizyondakiler</a></li>
+                            <li class="propClone"><a href="contact.html">Contact</a></li>
+                            <partial name="_LoginPartial" />
+                        </ul>
+                    </div>
+                </div>
+            </nav>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-primary" >
-            <a class="navbar-brand text-white font-weight-bold" style="font-size:22px;" href="#">Movie Center</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-black" style="font-size:16px; color:black; font-weight:700;" asp-controller="Home" asp-action="Index">Anasayfa <span class="sr-only">(current)</span></a>
-                    </li> 
-                    <li class="nav-item">
-                        <a class="nav-link text-black" style="font-size: 16px; color: black; font-weight: 700; " asp-controller="Visions" asp-action="Index">Vizyondakiler</a>
-                    </li>
+            @if (ViewData["Title"].ToString() == "Home Page")
+            {
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div class="text-homeimage">
+                                <div class="maintext-image" data-scrollreveal="enter top over 1.5s after 0.1s">
+                                   Konforlu Koltuklarda Hemen Sen de Yerini Al
+                                </div>
+                                <div class="subtext-image" data-scrollreveal="enter bottom over 1.7s after 0.3s">
+                                    İlk Biletine Mısırın Bizden
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                </ul>
-                <span class="navbar-text">
-                    <partial name="_LoginPartial" />
-                </span>
-            </div>
-        </nav>
-        <!-- Navigation-->
-        <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-         <div class="container px-5">
-             <a class="navbar-brand" href="index.html">Start Bootstrap</a>
-             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                     <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
-                     <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-                     <li class="nav-item"><a asp-controller="Categories" asp-action="Index" class="nav-link">Kategoriler</a></li>
-                     <li class="nav-item"><a asp-controller="Visions" asp-action="Index" class="nav-link">Vizyondakiler</a></li>
-                     <li class="nav-item dropdown">
-                         <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
-                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                             <li><a class="dropdown-item" href="blog-home.html">Blog Home</a></li>
-                             <li><a class="dropdown-item" href="blog-post.html">Blog Post</a></li>
-                         </ul>
-                     </li>
-                     <li class="nav-item dropdown">
-                         <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Portfolio</a>
-                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                             <li><a class="dropdown-item" href="portfolio-overview.html">Portfolio Overview</a></li>
-                             <li><a class="dropdown-item" href="portfolio-item.html">Portfolio Item</a></li>
-                         </ul>
-                     </li>
-                     <partial name="_LoginPartial" />
-                 </ul>
-             </div>
-         </div>
-     </nav> -->
+            }
+
+        </div>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    
+        <main role="main">
             @RenderBody()
         </main>
-    </div>
+    
 
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2021 - CinemaSystem - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- FOOTER =============================-->
+    <div class="footer text-center">
+        <div class="container">
+            <div class="row">
+                <p class="footernote">
+                    Connect with Scorilo
+                </p>
+                <ul class="social-iconsfooter">
+                    <li><a href="#"><i class="fa fa-phone"></i></a></li>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                </ul>
+                <p>
+                    &copy; 2021 - CinemaSystem - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a><br
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="~/Home/js/jquery-.js"></script>
+    <script src="~/Home/js/bootstrap.min.js"></script>
+    <script src="~/Home/js/anim.js"></script>
+    <script>
+        //----HOVER CAPTION---//
+        jQuery(document).ready(function ($) {
+            $('.fadeshop').hover(
+                function () {
+                    $(this).find('.captionshop').fadeIn(150);
+                },
+                function () {
+                    $(this).find('.captionshop').fadeOut(150);
+                }
+            );
+        });
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

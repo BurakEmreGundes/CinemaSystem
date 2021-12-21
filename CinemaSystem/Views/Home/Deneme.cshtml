@@ -53,39 +53,41 @@
             <div class="editContent">
                 <h1 class="text-center latestitems">Vizyondaki Filmler</h1>
             </div>
-
+            
         </div>
         <div class="row">
             @foreach (var item in ViewBag.movies)
-            {<!-- /.productbox -->
-                <div class="col-md-4">
-                    <div class="productbox">
-                        <div class="fadeshop" style="width:100%;">
-
-                            <div class="captionshop text-center" style="display: none;">
-                                <h3>@(item.MovieName)</h3>
-                                <p>
-                                    Filmin Detayları İçin Tıklayınız
-                                </p>
-                                <p>
-                                    <a asp-action="Details" asp-route-id="@item.MovieID" asp-controller="Movies" class="learn-more detailslearn"><i class="fa fa-link"></i> Details</a>
-                                </p>
-                            </div>
-                            <span class="maxproduct" style="width:100%;"><img style="width:100%; height:300px;" src="@(item.Poster)" alt=""></span>
+            {
+            <!-- /.productbox -->
+            <div class="col-md-4">
+                <div class="productbox">
+                    <div class="fadeshop" style="width:100%;">
+                      
+                        <div class="captionshop text-center" style="display: none;">
+                            <h3>@(item.MovieName)</h3>
+                            <p>
+                                Filmin Detayları İçin Tıklayınız
+                            </p>
+                            <p>
+                                <a href="#" class="learn-more detailslearn"><i class="fa fa-link"></i> Details</a>
+                            </p>
                         </div>
-                        <div class="product-details">
-                            <a asp-action="Details" asp-route-id="@item.MovieID" asp-controller="Movies">
-                                <h1>@(item.MovieName)</h1>
-                            </a>
-                            <span class="price">
-                                <span class="edd_price">@(item.IMDB_Puan)</span>
-                            </span>
-                        </div>
+                        <span class="maxproduct" style="width:100%;"><img style="width:100%; height:300px;" src="@(item.Poster)" alt=""></span>
                     </div>
-                </div>            }
+                    <div class="product-details">
+                        <a asp-action="Details" asp-route-id="@item.Id" asp-controller="Movies">
+                            <h1>@(item.MovieName)</h1>
+                        </a>
+                        <span class="price">
+                            <span class="edd_price">@(item.IMDB_Puan)</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            }
         </div>
     </div>
-
+ 
 </section>
 
 
@@ -104,7 +106,7 @@
 
 
 <!-- AREA =============================-->
-<!--<div class="item content">
+<div class="item content">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -119,7 +121,7 @@
                     </p>
                 </div>
             </div>
-            
+            <!-- /.col-md-4 col -->
             <div class="col-md-4">
                 <i class="fa fa-comments infoareaicon"></i>
                 <div class="infoareawrap">
@@ -132,7 +134,7 @@
                     </p>
                 </div>
             </div>
-         
+            <!-- /.col-md-4 col -->
             <div class="col-md-4">
                 <i class="fa fa-bullhorn infoareaicon"></i>
                 <div class="infoareawrap">
@@ -148,7 +150,7 @@
         </div>
     </div>
 </div>
--->
+
 
 <!-- TESTIMONIAL =============================-->
 <div class="item content">

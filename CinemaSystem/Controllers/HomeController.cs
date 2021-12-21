@@ -1,4 +1,5 @@
 ﻿using CinemaSystem.Data;
+using CinemaSystem.Data.DTOs;
 using CinemaSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,9 +24,26 @@ namespace CinemaSystem.Controllers
         public IActionResult Index()
         {
 
-           ViewBag.movies=_context.Movies
-                 .Include(m => m.Language)
-                 .Include(m => m.Category).ToList();
+            var visionFilmList = (from ctm in _context.CinemaTheaterMovies
+                                  join m in _context.Movies on ctm.MovieId equals m.Id
+                                  select new MovieDTO
+                                  {
+                                      MovieID = m.Id,
+                                      MovieName=m.MovieName,
+                                      Year=m.Year,
+                                      MovieLength=m.Time,
+                                      Subject=m.Subject,
+                                      StartedDate=ctm.StartedDate,
+                                      FinishedDate=ctm.FinishedDate,
+                                      Category=m.Category.CategoryName,
+                                      Poster=m.Poster,
+                                      Fragment=m.Fragment,
+                                      IMDB_Puan=m.IMDB_Puan
+                                  }).OrderBy(x=>x.StartedDate).ToList().Where(x=>x.FinishedDate>=DateTime.Now.Date);
+
+
+
+            ViewBag.movies = visionFilmList;
 
            ViewBag.categories = _context.Categories.ToList(); ;
 
@@ -34,6 +52,16 @@ namespace CinemaSystem.Controllers
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        public IActionResult Deneme()
+        {
+            ViewBag.movies = _context.Movies
+                 .Include(m => m.Language)
+                 .Include(m => m.Category).Take(3).ToList();
+
+            ViewBag.categories = _context.Categories.ToList(); ;
             return View();
         }
 
