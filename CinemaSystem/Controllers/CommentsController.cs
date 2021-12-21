@@ -51,9 +51,10 @@ namespace CinemaSystem.Controllers
         }
 
         // GET: Comments/Create
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
-            ViewData["MovieId"] = new SelectList(_context.Movies, "Id", "Id");
+  
+            ViewBag.MovieId = id;
             return View();
         }
 

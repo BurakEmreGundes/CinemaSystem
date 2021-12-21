@@ -9,6 +9,8 @@ using CinemaSystem.Data;
 using CinemaSystem.Models;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using CinemaSystem.Data.DTOs;
+using Microsoft.AspNetCore.Identity;
 
 namespace CinemaSystem.Controllers
 {
@@ -16,11 +18,13 @@ namespace CinemaSystem.Controllers
     {
         private readonly IWebHostEnvironment _hostEnvironment;
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<Customer> _userManager;
 
-        public MoviesController(ApplicationDbContext context,IWebHostEnvironment hostEnvironment)
+        public MoviesController(ApplicationDbContext context,IWebHostEnvironment hostEnvironment, UserManager<Customer> userManager)
         {
             _context = context;
             _hostEnvironment = hostEnvironment;
+            _userManager = userManager;
         }
 
         // GET: Movies
@@ -40,6 +44,22 @@ namespace CinemaSystem.Controllers
                 return NotFound();
             }
 
+            var movieComments = (from c in _context.Comments
+                                 join m in _context.Movies on c.MovieId equals m.Id
+                                 select new CommentDTO
+                                 {
+                                     CommentUserId=c.UserId,
+                                     CommentTitle = c.Title,
+                                     CommentDescription = c.Description
+                                 }).ToList();
+
+            foreach (var item in movieComments)
+            {
+                var user= await _userManager.FindByIdAsync(item.CommentUserId);
+                item.UserName = user.Name+" "+user.Surname;
+            }
+
+
             var movie = await _context.Movies
                 .Include(m => m.Category)
                 .Include(m => m.Language)
@@ -48,6 +68,8 @@ namespace CinemaSystem.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.movieComments = movieComments;
 
             return View(movie);
         }

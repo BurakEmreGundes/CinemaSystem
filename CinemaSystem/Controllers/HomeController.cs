@@ -39,7 +39,7 @@ namespace CinemaSystem.Controllers
                                       Poster=m.Poster,
                                       Fragment=m.Fragment,
                                       IMDB_Puan=m.IMDB_Puan
-                                  }).OrderBy(x=>x.StartedDate).ToList().Where(x=>x.FinishedDate>=DateTime.Now.Date);
+                                  }).OrderBy(x=>x.StartedDate).ToList().Where(x=>x.FinishedDate>=DateTime.Now.Date).Take(3);
 
 
 

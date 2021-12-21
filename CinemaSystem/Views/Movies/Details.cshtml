@@ -4,15 +4,15 @@
     ViewData["Title"] = "Details";
 }
 
-<h1 style="margin-top:100px;">Details</h1>
+<h1 style="margin-top:100px;"></h1>
 
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
-            <img src="@Model.Poster" class="img-fluid" alt="Responsive image">
+        <div class="col-md-6">
+            <img src="@Model.Poster" style="width:100%;" class="img-fluid" alt="Responsive image">
         </div>
-        
-        <div class="col-md-8">
+
+        <div class="col-md-6">
             <dl class="row">
                 <dt class="col-sm-2">
                     @Html.DisplayNameFor(model => model.MovieName)
@@ -71,9 +71,30 @@
             </dl>
         </div>
     </div>
+
+  
+    <div class="row" style="margin-top:40px;">
+
+        <div class="col-md-12 text-center">
+            <a asp-action="Create" asp-controller="Comments" asp-route-id="@Model.Id" style="background-color: #00bba7; text-decoration:none; font-size:medium; color:black; padding-right:12px; padding-left:12px; padding-top:6px; padding-bottom:6px; font-weight:700; border-radius:10px;
+">Yorum Ekle</a>
+        </div>
+        @foreach (var item in ViewBag.movieComments)
+        {
+            <div class="col-md-12" style="margin-top:5px; border-radius:50px;">
+                <div class="card" style="width: 100%; background-color: #e5f0f1; padding-left:30px; padding-right:30px; padding-top:10px; padding-bottom:10px;">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.UserName</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">@item.CommentTitle</h6>
+                        <p class="card-text">@item.CommentDescription</p>
+                    </div>
+                </div>
+            </div>
+        }
+
+  
+    </div>
+
 </div>
 
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
