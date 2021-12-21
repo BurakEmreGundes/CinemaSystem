@@ -379,8 +379,288 @@ namespace CinemaSystem.Controllers
         }
 
 
+        // GET: MovieDirectors
+        public async Task<IActionResult> MovieDirectorList()
+        {
+            var applicationDbContext = _context.MovieDirectors.Include(m => m.Director).Include(m => m.Movie);
+            return View(await applicationDbContext.ToListAsync());
+        }
+        // GET: MovieDirectors/Details/5
+        public async Task<IActionResult> MovieDirectorDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var movieDirector = await _context.MovieDirectors
+                .Include(m => m.Director)
+                .Include(m => m.Movie)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (movieDirector == null)
+            {
+                return NotFound();
+            }
+
+            return View(movieDirector);
+        }
+
+        // GET: MovieDirectors/Create
+        public IActionResult MovieDirectorCreate()
+        {
+            ViewData["DirectorId"] = new SelectList(_context.Directors, "Id", "NameSurname");
+            ViewData["MovieId"] = new SelectList(_context.Movies, "Id", "MovieName");
+            return View();
+        }
+        // GET: MovieDirectors/Edit/5
+        public async Task<IActionResult> MovieDirectorEdit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var movieDirector = await _context.MovieDirectors.FindAsync(id);
+            if (movieDirector == null)
+            {
+                return NotFound();
+            }
+            ViewData["DirectorId"] = new SelectList(_context.Directors, "Id", "NameSurname", movieDirector.DirectorId);
+            ViewData["MovieId"] = new SelectList(_context.Movies, "Id", "MovieName", movieDirector.MovieId);
+            return View(movieDirector);
+        }
+
+        // GET: MovieDirectors/Delete/5
+        public async Task<IActionResult> MovieDirectorDelete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var movieDirector = await _context.MovieDirectors
+                .Include(m => m.Director)
+                .Include(m => m.Movie)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (movieDirector == null)
+            {
+                return NotFound();
+            }
+
+            return View(movieDirector);
+        }
+
+
+        // GET: ActorRoles
+        public async Task<IActionResult> ActorRoleList()
+        {
+            return View(await _context.ActorRoles.ToListAsync());
+        }
+
+        // GET: ActorRoles/Details/5
+        public async Task<IActionResult> ActorRoleDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var actorRole = await _context.ActorRoles
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (actorRole == null)
+            {
+                return NotFound();
+            }
+
+            return View(actorRole);
+        }
+
+        // GET: ActorRoles/Create
+        public IActionResult ActorRoleCreate()
+        {
+            return View();
+        }
+
+        // GET: ActorRoles/Edit/5
+        public async Task<IActionResult> ActorRoleEdit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var actorRole = await _context.ActorRoles.FindAsync(id);
+            if (actorRole == null)
+            {
+                return NotFound();
+            }
+            return View(actorRole);
+        }
+
+        // GET: ActorRoles/Delete/5
+        public async Task<IActionResult> ActorRoleDelete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var actorRole = await _context.ActorRoles
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (actorRole == null)
+            {
+                return NotFound();
+            }
+
+            return View(actorRole);
+        }
+
+        // GET: Cinemas
+        public async Task<IActionResult> CinemaList()
+        {
+            var applicationDbContext = _context.Cinemas.Include(c => c.District).Include(c => c.Province);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
+        // GET: Cinemas/Details/5
+        public async Task<IActionResult> CinemaDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var cinema = await _context.Cinemas
+                .Include(c => c.District)
+                .Include(c => c.Province)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (cinema == null)
+            {
+                return NotFound();
+            }
+
+            return View(cinema);
+        }
+
+        // GET: Cinemas/Create
+        public IActionResult CinemaCreate()
+        {
+            ViewData["DistrictId"] = new SelectList(_context.Districts, "Id", "DistrictName");
+            ViewData["ProvinceId"] = new SelectList(_context.Provinces, "Id", "ProvinceName");
+            return View();
+        }
+
+        // GET: Cinemas/Edit/5
+        public async Task<IActionResult> CinemaEdit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var cinema = await _context.Cinemas.FindAsync(id);
+            if (cinema == null)
+            {
+                return NotFound();
+            }
+            ViewData["DistrictId"] = new SelectList(_context.Districts, "Id", "DistrictName", cinema.DistrictId);
+            ViewData["ProvinceId"] = new SelectList(_context.Provinces, "Id", "ProvinceName", cinema.ProvinceId);
+            return View(cinema);
+        }
+
+        // GET: Cinemas/Delete/5
+        public async Task<IActionResult> CinemaDelete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var cinema = await _context.Cinemas
+                .Include(c => c.District)
+                .Include(c => c.Province)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (cinema == null)
+            {
+                return NotFound();
+            }
+
+            return View(cinema);
+        }
+
+
+        // GET: CinemaTheaters
+        public async Task<IActionResult> CinemaTheaterList()
+        {
+            var applicationDbContext = _context.CinemaTheaters.Include(c => c.Cinema);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
+        // GET: CinemaTheaters/Details/5
+        public async Task<IActionResult> CinemaTheaterDetails(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var cinemaTheater = await _context.CinemaTheaters
+                .Include(c => c.Cinema)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (cinemaTheater == null)
+            {
+                return NotFound();
+            }
+
+            return View(cinemaTheater);
+        }
+
+        // GET: CinemaTheaters/Create
+        public IActionResult CinemaTheaterCreate()
+        {
+            ViewData["CinemaId"] = new SelectList(_context.Cinemas, "Id", "CinemaName");
+            return View();
+        }
+
+        // GET: CinemaTheaters/Edit/5
+        public async Task<IActionResult> CinemaTheaterEdit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var cinemaTheater = await _context.CinemaTheaters.FindAsync(id);
+            if (cinemaTheater == null)
+            {
+                return NotFound();
+            }
+            ViewData["CinemaId"] = new SelectList(_context.Cinemas, "Id", "CinemaName", cinemaTheater.CinemaId);
+            return View(cinemaTheater);
+        }
+        // GET: CinemaTheaters/Delete/5
+        public async Task<IActionResult> CinemaTheaterDelete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var cinemaTheater = await _context.CinemaTheaters
+                .Include(c => c.Cinema)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (cinemaTheater == null)
+            {
+                return NotFound();
+            }
+
+            return View(cinemaTheater);
+        }
+
+
+
 
 
     }
-   
+
 }

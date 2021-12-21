@@ -65,11 +65,11 @@ namespace CinemaSystem.Controllers
             {
                 _context.Add(cinema);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("CinemaList", "Admin");
             }
             ViewData["DistrictId"] = new SelectList(_context.Districts, "Id", "DistrictName", cinema.DistrictId);
             ViewData["ProvinceId"] = new SelectList(_context.Provinces, "Id", "ProvinceName", cinema.ProvinceId);
-            return View(cinema);
+            return RedirectToAction("CinemaList", "Admin");
         }
 
         // GET: Cinemas/Edit/5
@@ -120,11 +120,11 @@ namespace CinemaSystem.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("CinemaList", "Admin");
             }
             ViewData["DistrictId"] = new SelectList(_context.Districts, "Id", "DistrictName", cinema.DistrictId);
             ViewData["ProvinceId"] = new SelectList(_context.Provinces, "Id", "ProvinceName", cinema.ProvinceId);
-            return View(cinema);
+            return RedirectToAction("CinemaList", "Admin");
         }
 
         // GET: Cinemas/Delete/5
@@ -155,7 +155,7 @@ namespace CinemaSystem.Controllers
             var cinema = await _context.Cinemas.FindAsync(id);
             _context.Cinemas.Remove(cinema);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("CinemaList", "Admin");
         }
 
         private bool CinemaExists(int id)

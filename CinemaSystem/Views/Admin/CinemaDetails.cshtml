@@ -1,0 +1,53 @@
+﻿@model CinemaSystem.Models.Cinema
+
+@{ ViewData["Title"] = "Details";
+    Layout = "_AdminLayout";}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Cinema</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CinemaName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CinemaName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Province)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Province.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.District)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.District.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TheaterCount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TheaterCount)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="CinemaEdit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="CinemaList">Back to List</a>
+</div>

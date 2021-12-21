@@ -60,9 +60,9 @@ namespace CinemaSystem.Controllers
             {
                 _context.Add(actorRole);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("ActorRoleList", "Admin");
             }
-            return View(actorRole);
+            return RedirectToAction("ActorRoleList", "Admin");
         }
 
         // GET: ActorRoles/Edit/5
@@ -111,9 +111,9 @@ namespace CinemaSystem.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("ActorRoleList", "Admin");
             }
-            return View(actorRole);
+            return RedirectToAction("ActorRoleList", "Admin");
         }
 
         // GET: ActorRoles/Delete/5
@@ -142,7 +142,7 @@ namespace CinemaSystem.Controllers
             var actorRole = await _context.ActorRoles.FindAsync(id);
             _context.ActorRoles.Remove(actorRole);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("ActorRoleList", "Admin");
         }
 
         private bool ActorRoleExists(int id)
