@@ -118,7 +118,7 @@ namespace CinemaSystem.Controllers
                 }
                 return RedirectToAction("TheaterChairList", "Admin");
             }
-            ViewData["CinemaTheaterId"] = new SelectList(_context.CinemaTheaters, "Id", "Id", theaterChair.CinemaTheaterId);
+            ViewData["CinemaTheaterId"] = new SelectList(_context.CinemaTheaters, "Id", "TheaterNo", theaterChair.CinemaTheaterId);
             return RedirectToAction("TheaterChairList", "Admin");
         }
 

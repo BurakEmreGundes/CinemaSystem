@@ -1,0 +1,9 @@
+﻿
+@{ ViewData["Title"] = "Index"; }
+
+<h1>@ViewBag.id</h1>
+
+@foreach (var item in ViewBag.ctbymi)
+{
+    <a asp-action="MovieSessions" asp-route-id="@item.CinemaTheater.Id"><h1>@item.CinemaTheater.TheaterNo</h1></a>
+}

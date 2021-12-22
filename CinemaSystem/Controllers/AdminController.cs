@@ -753,7 +753,7 @@ namespace CinemaSystem.Controllers
         // GET: TheaterChairs/Create
         public IActionResult TheaterChairCreate()
         {
-            ViewData["CinemaTheaterId"] = new SelectList(_context.CinemaTheaters, "Id", "Id");
+            ViewData["CinemaTheaterId"] = new SelectList(_context.CinemaTheaters, "Id", "TheaterNo");
             return View();
         }
 
@@ -770,7 +770,7 @@ namespace CinemaSystem.Controllers
             {
                 return NotFound();
             }
-            ViewData["CinemaTheaterId"] = new SelectList(_context.CinemaTheaters, "Id", "Id", theaterChair.CinemaTheaterId);
+            ViewData["CinemaTheaterId"] = new SelectList(_context.CinemaTheaters, "Id", "TheaterNo", theaterChair.CinemaTheaterId);
             return View(theaterChair);
         }
 

@@ -1,0 +1,58 @@
+﻿@model CinemaSystem.Models.MovieTicket
+    @using System.Linq;
+    @{ ViewData["Title"] = "Theater Chairs"; }
+
+
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="CreateTicket" asp-controller="MovieTheatersPage">
+
+                @foreach (var item in ViewBag.theaterChairs)
+                {
+                    <h1 style="@(ViewBag.movieTicketsChair.Contains(item.Id) ? "color:red;":"" )">@item.ChairCode</h1>
+                }
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="MovieSessionId" class="control-label"></label>
+                    <input asp-for="MovieSessionId" value="@ViewBag.movieSessionId" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="BuyDate" class="control-label"></label>
+                    <input asp-for="BuyDate" value="@DateTime.Now" type="datetime" class="form-control" />
+                    <span asp-validation-for="BuyDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" value="50" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Number" class="control-label"></label>
+                    <input asp-for="Number" value="1" class="form-control" />
+                    <span asp-validation-for="Number" class="text-danger"></span>
+                </div>
+                @{ 
+                    var avaibleTheaterChair =new List<SelectListItem>();
+
+                    foreach (var item in ViewBag.theaterChairs)
+                    {
+                        if (!ViewBag.movieTicketsChair.Contains(item.Id))
+                        {
+                            avaibleTheaterChair.Add(new SelectListItem{ Text=item.ChairCode, Value=item.Id.ToString() });
+                        }
+                    }
+                    
+
+                }
+                <div class="form-group">
+                    <label asp-for="TheaterChairId" class="control-label"></label>
+                    <select asp-for="TheaterChairId" class="form-control" asp-items="@avaibleTheaterChair"></select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>

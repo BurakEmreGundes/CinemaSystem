@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 
 namespace CinemaSystem.Models
 {
+
+    // 1 numaralı salonda yer alan filmin seansları burada bulunuyor
     public class MovieSession
     {
         public int Id { get; set; }
