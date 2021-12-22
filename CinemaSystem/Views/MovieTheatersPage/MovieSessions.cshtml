@@ -9,16 +9,53 @@
 <h2 class="text-center">Film Seansları</h2>
 <br />
 <div class="container">
-    <div class="row" style="display:flex; justify-content:space-between;" >
+    <div class="row" style="display:flex; justify-content:center; flex-wrap:wrap;">
         @foreach (var item in ViewBag.msbyti)
         {
-        <div class="col-md-3 text-center pt-3 pb-4" style="border:1px solid black; border-radius:10px; padding-bottom:10px;">
+        <div class="col-md-3 text-center pt-3 pb-4" style="border:3px solid black; margin-left:10px; margin-top:12px; border-radius:10px; padding-bottom:18px;">
             <h3>@item.StartedDate</h3>
             <h3>@item.FinishedDate</h3>
+            <br />
             <a asp-action="TheaterChairs" asp-controller="MovieTheatersPage" asp-route-id="@item.Id" style="background-color: #00bba7; text-decoration:none; font-size:medium; color:black; padding-right:12px; padding-left:12px; padding-top:6px; padding-bottom:6px; font-weight:700; border-radius:10px;
 ">Seans Koltuklarını incele</a>
-            
+
         </div>
+        <div class="col-md-3 text-center pt-3 pb-4" style="border: 3px solid black; margin-left: 10px; margin-top: 12px; border-radius: 10px; padding-bottom: 18px; ">
+            <h3>@item.StartedDate</h3>
+            <h3>@item.FinishedDate</h3>
+            <br />
+            <a asp-action="TheaterChairs" asp-controller="MovieTheatersPage" asp-route-id="@item.Id" style="background-color: #00bba7; text-decoration:none; font-size:medium; color:black; padding-right:12px; padding-left:12px; padding-top:6px; padding-bottom:6px; font-weight:700; border-radius:10px;
+">Seans Koltuklarını incele</a>
+
+        </div>
+        <div class="col-md-3 text-center pt-3 pb-4" style="border: 3px solid black; margin-left: 10px; margin-top: 12px; border-radius: 10px; padding-bottom: 18px; ">
+            <h3>@item.StartedDate</h3>
+            <h3>@item.FinishedDate</h3>
+            <br />
+            <a asp-action="TheaterChairs" asp-controller="MovieTheatersPage" asp-route-id="@item.Id" style="background-color: #00bba7; text-decoration:none; font-size:medium; color:black; padding-right:12px; padding-left:12px; padding-top:6px; padding-bottom:6px; font-weight:700; border-radius:10px;
+">Seans Koltuklarını incele</a>
+
+        </div>
+        <div class="col-md-3 text-center pt-3 pb-4" style="border: 3px solid black; margin-left: 10px; margin-top: 12px; border-radius: 10px; padding-bottom: 18px; ">
+            <h3>@item.StartedDate</h3>
+            <h3>@item.FinishedDate</h3>
+            <br />
+            <a asp-action="TheaterChairs" asp-controller="MovieTheatersPage" asp-route-id="@item.Id" style="background-color: #00bba7; text-decoration:none; font-size:medium; color:black; padding-right:12px; padding-left:12px; padding-top:6px; padding-bottom:6px; font-weight:700; border-radius:10px;
+">Seans Koltuklarını incele</a>
+          
+
+        </div>
+        <div class="col-md-3 text-center pt-3 pb-4" style="border: 3px solid black; margin-left: 10px; margin-top: 12px; border-radius: 10px; padding-bottom: 18px; ">
+            <h3>@item.StartedDate</h3>
+            <h3>@item.FinishedDate</h3>
+            <br />
+            <a asp-action="TheaterChairs" asp-controller="MovieTheatersPage" asp-route-id="@item.Id" style="background-color: #00bba7; text-decoration:none; font-size:medium; color:black; padding-right:12px; padding-left:12px; padding-top:6px; padding-bottom:6px; font-weight:700; border-radius:10px;
+">Seans Koltuklarını incele</a>
+
+        </div>
+
+
+
         }
     </div>
 </div>

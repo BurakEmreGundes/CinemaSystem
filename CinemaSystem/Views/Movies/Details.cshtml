@@ -13,75 +13,52 @@
         </div>
 
         <div class="col-md-6">
-            <dl class="row">
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.MovieName)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.MovieName)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Year)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Year)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Time)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Time)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.IMDB_Puan)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.IMDB_Puan)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Subject)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Subject)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Poster)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Poster)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Fragment)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Fragment)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Category)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Category.Id)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Language)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Language.Id)
-                </dd>
-            </dl>
+            
+                <h5 style="display:block;" >
+                    Film Adı:  @Model.MovieName
+                </h5>
+                <h5 style="display:block;" >
+                    Yıl: @Model.Year
+                </h5>
+                <h5 style="display:block;" >
+                    Film Süresi:  @Model.Time
+                </h5>
+                <h5 style="display:block;" >
+                    IMDB:  @Model.IMDB_Puan
+                </h5>
+                <h5 style="display:block;" >
+                    Kategori: @Model.Category.CategoryName
+                </h5>
+                <h5 style="display:block;" >
+                    Dil: @Model.Language.LanguageName 
+                </h5>
+                <h5 style="display:block;" >
+                    Konu: @Model.Subject
+                </h5>
+              
+                
+                <p style="display:block;" class="text-center" style="width:100%;">
+                    <a asp-action="Index" asp-controller="MovieTheatersPage" asp-route-id="@Model.Id" style="background-color: #00bba7; text-decoration:none; font-size:medium; color:black; padding-right:12px; padding-left:12px; padding-top:6px; padding-bottom:6px; margin-top:10px; width:80%; font-size:18px; font-weight:700; border-radius:10px;
+">Bilet Al</a>
+                </p>
+         
         </div>
-        <div class="col-md-12">
-            <a asp-action="Index" asp-controller="MovieTheatersPage" asp-route-id="@Model.Id" style="background-color: #00bba7; text-decoration:none; font-size:medium; color:black; padding-right:12px; padding-left:12px; padding-top:6px; padding-bottom:6px; font-weight:700; border-radius:10px;
-">Yorum Ekle</a>
-        </div>
+     
     </div>
 
 
+    
+
+
   
-    <div class="row" style="margin-top:40px;">
+    <div class="row" style="margin-top:40px; margin-bottom:20px;">
 
         <div class="col-md-12 text-center">
-            <a asp-action="Create" asp-controller="Comments" asp-route-id="@Model.Id" style="background-color: #00bba7; text-decoration:none; font-size:medium; color:black; padding-right:12px; padding-left:12px; padding-top:6px; padding-bottom:6px; font-weight:700; border-radius:10px;
+       
+            @{ 
+                TempData["MovieId"] = Model.Id;
+            }
+            <a asp-action="Create" asp-controller="Comments" style="background-color: #00bba7; text-decoration:none; font-size:medium; color:black; padding-right:12px; padding-left:12px; padding-top:6px; padding-bottom:6px; font-weight:700; border-radius:10px;
 ">Yorum Ekle</a>
         </div>
         @foreach (var item in ViewBag.movieComments)

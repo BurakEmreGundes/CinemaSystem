@@ -51,10 +51,11 @@ namespace CinemaSystem.Controllers
         }
 
         // GET: Comments/Create
-        public IActionResult Create(int? id)
+        public IActionResult Create()
         {
-  
-            ViewBag.MovieId = id;
+
+            //int? id
+            ViewBag.MovieId = TempData["MovieId"];
             return View();
         }
 
@@ -67,13 +68,13 @@ namespace CinemaSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-  
+
                 _context.Add(comment);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "Movies", new {Id = comment.MovieId });
             }
             ViewData["MovieId"] = new SelectList(_context.Movies, "Id", "Id", comment.MovieId);
-            return View(comment);
+            return RedirectToAction("Details", "Movies", new { Id = comment.MovieId });
         }
 
         // GET: Comments/Edit/5
