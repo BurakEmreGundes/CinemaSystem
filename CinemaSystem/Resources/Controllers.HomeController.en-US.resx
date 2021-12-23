@@ -120,6 +120,9 @@
   <data name="ClickForMovieDetail" xml:space="preserve">
     <value>Click for the details of the movie</value>
   </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Contact With Us</value>
+  </data>
   <data name="HomePageFirstBoxDesc" xml:space="preserve">
     <value>By registering on the site, you can easily get tickets to the movie you want.</value>
   </data>
@@ -146,6 +149,18 @@
   </data>
   <data name="HomePageThirdBoxTitle" xml:space="preserve">
     <value>Enjoy the Movie</value>
+  </data>
+  <data name="MenuContact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="MenuHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="MenuProfile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="MenuVisions" xml:space="preserve">
+    <value>Visions</value>
   </data>
   <data name="PageFirstTitle" xml:space="preserve">
     <value>Movies in Theaters</value>

@@ -26,9 +26,9 @@
                     </div>
                     <div id="navbar-collapse-02" class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="propClone"><a asp-controller="Home" asp-route-culture="@(ViewData["ctr"].ToString()=="tr-TR" ? "tr-TR":"en-US" )" asp-action="Index">Anasayfa</a></li>
-                            <li class="propClone"><a asp-controller="Visions" asp-action="Index" asp-route-culture="@(ViewData["ctr"].ToString()=="tr-TR" ? "tr-TR":"en-US" )">Vizyondakiler</a></li>
-                            <li class="propClone"><a href="contact.html">Contact</a></li>
+                            <li class="propClone"><a asp-controller="Home" asp-route-culture="@(ViewData["ctr"].ToString()=="tr-TR" ? "tr-TR":"en-US" )" asp-action="Index">@ViewData["MenuHome"]</a></li>
+                            <li class="propClone"><a asp-controller="Visions" asp-action="Index" asp-route-culture="@(ViewData["ctr"].ToString()=="tr-TR" ? "tr-TR":"en-US" )">@ViewData["MenuVisions"]</a></li>
+                            <li class="propClone"><a href="contact.html">@ViewData["MenuContact"]</a></li>
                             <li class="propClone"><a asp-controller="Home" asp-action="Index" asp-route-culture="@(ViewData["ctr"].ToString()=="tr-TR" ? "en-US":"tr-TR" )">@(ViewData["ctr"].ToString()=="tr-TR" ? "İngilizce" : "Türkçe" )</a></li>
                             <partial name="_LoginPartial" />
                         </ul>
@@ -65,7 +65,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - CinemaSystem - <a  asp-controller="Home" asp-action="Home">Home</a>
+            &copy; 2021 - CinemaSystem - <a  asp-controller="Home" asp-route-culture="@(ViewData["ctr"].ToString()=="tr-TR" ? "tr-TR":"en-US" )" asp-action="Home">@ViewData["MenuHome"]</a>
         </div>
     </footer>
 
@@ -74,7 +74,7 @@
         <div class="container">
             <div class="row">
                 <p class="footernote">
-                    Bizimle İletişime Geç
+                    @ViewData["ContactUs"]
                 </p>
                 <ul class="social-iconsfooter">
                     <li><a href="#"><i class="fa fa-phone"></i></a></li>
@@ -84,7 +84,7 @@
                     <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
                 </ul>
                 <p>
-                    &copy; 2021 - CinemaSystem - <a  asp-controller="Home" asp-action="Index">Home</a><br
+                    &copy; 2021 - CinemaSystem - <a  asp-controller="Home" asp-action="Index">@ViewData["MenuHome"]</a><br />
                 </p>
             </div>
         </div>

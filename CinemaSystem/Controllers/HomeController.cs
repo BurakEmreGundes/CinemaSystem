@@ -46,18 +46,25 @@ namespace CinemaSystem.Controllers
 
             ViewData["deneme"] = _localizer["Deneme"];
 
+            // LOCALIZATION //
             ViewData["HomePageFirstBoxTitle"] = _localizer["HomePageFirstBoxTitle"];
             ViewData["HomePageFirstBoxDesc"] = _localizer["HomePageFirstBoxDesc"];
             ViewData["HomePageSecondBoxTitle"] = _localizer["HomePageSecondBoxTitle"];
             ViewData["HomePageSecondBoxDesc"] = _localizer["HomePageSecondBoxDesc"];
             ViewData["HomePageThirdBoxTitle"] = _localizer["HomePageThirdBoxTitle"];
             ViewData["HomePageThirdBoxDesc"] = _localizer["HomePageThirdBoxDesc"];
-            @ViewData["PageFirstTitle"] = _localizer["PageFirstTitle"];
-            @ViewData["ClickForMovieDetail"] = _localizer["ClickForMovieDetail"];
-            @ViewData["SeeAllVisions"] = _localizer["SeeAllVisions"];
-            @ViewData["HomePageSupport"] = _localizer["HomePageSupport"];
-            @ViewData["HomePageSupportDesc"] = _localizer["HomePageSupportDesc"];
-            @ViewData["HomePagePromotionCode"] = _localizer["HomePagePromotionCode"];
+            ViewData["PageFirstTitle"] = _localizer["PageFirstTitle"];
+            ViewData["ClickForMovieDetail"] = _localizer["ClickForMovieDetail"];
+            ViewData["SeeAllVisions"] = _localizer["SeeAllVisions"];
+            ViewData["HomePageSupport"] = _localizer["HomePageSupport"];
+            ViewData["HomePageSupportDesc"] = _localizer["HomePageSupportDesc"];
+            ViewData["HomePagePromotionCode"] = _localizer["HomePagePromotionCode"];
+            ViewData["MenuHome"] = _localizer["MenuHome"];
+            ViewData["MenuContact"] = _localizer["MenuContact"];
+            ViewData["MenuVisions"] = _localizer["MenuVisions"];
+            ViewData["ContactUs"] = _localizer["ContactUs"];
+            ViewData["MenuProfile"] = _localizer["MenuProfile"];
+            // LOCALIZATION //
 
 
             var visionFilmList = (from ctm in _context.CinemaTheaterMovies

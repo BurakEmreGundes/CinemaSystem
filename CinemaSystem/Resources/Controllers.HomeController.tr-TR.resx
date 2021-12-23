@@ -120,6 +120,9 @@
   <data name="ClickForMovieDetail" xml:space="preserve">
     <value>Filmin Detayları İçin Tıklayınız</value>
   </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Bizimle iletişime geç</value>
+  </data>
   <data name="HomePageFirstBoxDesc" xml:space="preserve">
     <value>Site üzerinden kayıt olarak Dilediğiniz filme kolay bir şekilde bilet alabilirsiniz.</value>
   </data>
@@ -146,6 +149,18 @@
   </data>
   <data name="HomePageThirdBoxTitle" xml:space="preserve">
     <value>Fİlmİn Tadını Çıkart</value>
+  </data>
+  <data name="MenuContact" xml:space="preserve">
+    <value>İletİşİm</value>
+  </data>
+  <data name="MenuHome" xml:space="preserve">
+    <value>Anasayfa</value>
+  </data>
+  <data name="MenuProfile" xml:space="preserve">
+    <value>Profİl</value>
+  </data>
+  <data name="MenuVisions" xml:space="preserve">
+    <value>Vİzyondakİler</value>
   </data>
   <data name="PageFirstTitle" xml:space="preserve">
     <value>Vİzyondakİ Fİlmler</value>
