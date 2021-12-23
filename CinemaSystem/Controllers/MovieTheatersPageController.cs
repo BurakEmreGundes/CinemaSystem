@@ -83,7 +83,7 @@ namespace CinemaSystem.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateTicket([Bind("Id,MovieSessionId,BuyDate,Price,Number,TheaterChairId")] MovieTicket movieTicket)
+        public async Task<IActionResult> CreateTicket([Bind("Id,MovieSessionId,BuyDate,Price,Number,UserId,TheaterChairId")] MovieTicket movieTicket)
         {
 
             if(ModelState.IsValid)

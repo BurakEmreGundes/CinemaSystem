@@ -18,6 +18,8 @@ namespace CinemaSystem.Models
 
         public int Number { get; set; }
 
+        public string UserId { get; set; }
+
         public int TheaterChairId { get; set; }
         public TheaterChair TheaterChair { get; set; }
     }

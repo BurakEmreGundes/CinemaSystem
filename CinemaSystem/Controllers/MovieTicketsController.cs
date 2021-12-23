@@ -59,7 +59,7 @@ namespace CinemaSystem.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,MovieSessionId,BuyDate,Price,Number,TheaterChairId")] MovieTicket movieTicket)
+        public async Task<IActionResult> Create([Bind("Id,MovieSessionId,BuyDate,Price,Number,UserId,TheaterChairId")] MovieTicket movieTicket)
         {
             if (ModelState.IsValid)
             {
