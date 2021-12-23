@@ -11,8 +11,8 @@
     <div class="container">
         <div class="underlined-title">
             <div class="editContent">
-                <h1 class="text-center latestitems">Vİzyondakİ Fİlmler </h1>
-                <h2>@ViewData["Vision"]</h2>
+                <h1 class="text-center latestitems">@ViewData["PageFirstTitle"] </h1>
+              
             </div>
 
         </div>
@@ -27,10 +27,10 @@
                                             <div class="captionshop text-center" style="display: none;">
                                                 <h3>@(item.MovieName)</h3>
                                                 <p>
-                                                    Filmin Detayları İçin Tıklayınız
+                                                    @ViewData["ClickForMovieDetail"]
                                                 </p>
                                                 <p>
-                                                    <a asp-action="Details" asp-route-id="@item.MovieID" asp-controller="Movies" class="learn-more detailslearn"><i class="fa fa-link"></i> Details</a>
+                                                    <a asp-action="Details" asp-route-id="@item.MovieID" asp-route-culture="@(ViewData["ctr"].ToString()=="tr-TR" ? "tr-TR":"en-US" )" asp-controller="Movies" class="learn-more detailslearn"><i class="fa fa-link"></i> Details</a>
                                                 </p>
                                             </div>
                                             <span class="maxproduct" style="width:100%;"><img style="width:100%; height:300px;" src="@(item.Poster)" alt=""></span>
@@ -40,7 +40,7 @@
                                                 <h1>@(item.MovieName)</h1>
                                             </a>
                                             <span class="price">
-                                                <span class="edd_price">@(item.IMDB_Puan)</span>
+                                                <span class="edd_price">IMDB: @(item.IMDB_Puan)</span>
                                             </span>
                                         </div>
                                     </div>
@@ -82,7 +82,7 @@
             <div class="col-sm-10 col-sm-offset-1">
                 <div class="item" data-scrollreveal="enter top over 0.4s after 0.1s">
                     <h1 class="callactiontitle">
-                       Bu haftanın indirim kodu <span class="callactionbutton"><i class="fa fa-gift"></i> WOW24TH</span>
+                      @ViewData["VisionPagePromotionCode"] <span class="callactionbutton"><i class="fa fa-gift"></i> WOW24TH</span>
                     </h1>
                 </div>
             </div>

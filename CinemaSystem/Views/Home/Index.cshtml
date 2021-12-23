@@ -72,7 +72,7 @@
                                    @ViewData["ClickForMovieDetail"]
                                 </p>
                                 <p>
-                                    <a asp-action="Details" asp-route-id="@item.MovieID" asp-controller="Movies" class="learn-more detailslearn"><i class="fa fa-link"></i> Details</a>
+                                    <a asp-action="Details" asp-route-culture="@(ViewData["ctr"].ToString()=="tr-TR" ? "tr-TR":"en-US" )" asp-route-id="@item.MovieID" asp-controller="Movies" class="learn-more detailslearn"><i class="fa fa-link"></i> Details</a>
                                 </p>
                             </div>
                             <span class="maxproduct" style="width:100%;"><img style="width:100%; height:300px;" src="@(item.Poster)" alt=""></span>

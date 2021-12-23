@@ -142,7 +142,7 @@
     <value>Destek Ekibi</value>
   </data>
   <data name="HomePageSupportDesc" xml:space="preserve">
-    <value>You can contact us at any time using the contact number on our site. You can call for all kinds of problems and business partnerships.</value>
+    <value>Sitemizde bulunan iletişim numarasını kullanarak bize dilediğiniz zaman ulaşabilirsiniz. Her türlü sorun ve iş ortaklığı için arayabilirsiniz.</value>
   </data>
   <data name="HomePageThirdBoxDesc" xml:space="preserve">
     <value>Son derece rahat ortopedik koltuklarımızda filmin tadını keyifle çıkartın.</value>
@@ -167,5 +167,11 @@
   </data>
   <data name="SeeAllVisions" xml:space="preserve">
     <value>Tüm Vizyondakileri Gör</value>
+  </data>
+  <data name="SliderTextFirst" xml:space="preserve">
+    <value>Konforlu Koltuklarda Hemen Sen de Yerini Al</value>
+  </data>
+  <data name="SliderTextSecond" xml:space="preserve">
+    <value>İlk Biletine Mısırın Bizden</value>
   </data>
 </root>

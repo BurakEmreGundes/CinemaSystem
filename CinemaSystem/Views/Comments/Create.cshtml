@@ -14,7 +14,7 @@
 
 
 <div class="container">
-    <h1 class="text-center">Yorum Ekle</h1>
+    <h1 class="text-center">@ViewData["PageFirstTitle"]</h1>
     <div class="row" style="display:flex; justify-content:center;">
         <div class="col-md-4">
             <form asp-action="Create">
@@ -30,19 +30,19 @@
                     <span asp-validation-for="UserId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Title" class="control-label"></label>
+                    <label asp-for="Title" class="control-label">@ViewData["InputBoxCommentTitle"]</label>
                     <input asp-for="Title" class="form-control" />
                     <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Description" class="control-label"></label>
+                    <label asp-for="Description" class="control-label">@ViewData["InputBoxCommentDesc"]</label>
                     <input asp-for="Description" class="form-control" />
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
                 <br />
                 
                 <div class="form-group text-center">
-                    <input type="submit" value="Yorum Ekle" class="btn btn-primary" style="font-size:18px;" />
+                    <input type="submit" value="@ViewData["AddCommentButton"]" class="btn btn-primary" style="font-size:18px;" />
                 </div>
             </form>
         </div>

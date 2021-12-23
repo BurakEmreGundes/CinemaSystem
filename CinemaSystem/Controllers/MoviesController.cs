@@ -11,6 +11,9 @@ using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using CinemaSystem.Data.DTOs;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Localization;
+using System.Threading;
+using Microsoft.AspNetCore.Localization;
 
 namespace CinemaSystem.Controllers
 {
@@ -19,12 +22,14 @@ namespace CinemaSystem.Controllers
         private readonly IWebHostEnvironment _hostEnvironment;
         private readonly ApplicationDbContext _context;
         private readonly UserManager<Customer> _userManager;
+        private readonly IStringLocalizer<MoviesController> _localizer;
 
-        public MoviesController(ApplicationDbContext context,IWebHostEnvironment hostEnvironment, UserManager<Customer> userManager)
+        public MoviesController(ApplicationDbContext context,IWebHostEnvironment hostEnvironment, UserManager<Customer> userManager, IStringLocalizer<MoviesController> localizer)
         {
             _context = context;
             _hostEnvironment = hostEnvironment;
             _userManager = userManager;
+            _localizer = localizer;
         }
 
         // GET: Movies
@@ -37,15 +42,45 @@ namespace CinemaSystem.Controllers
         }
 
         // GET: Movies/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id,string culture)
         {
             if (id == null)
             {
                 return NotFound();
             }
+            var rqf = Request.HttpContext.Features.Get<IRequestCultureFeature>();
+            // Culture contains the information of the requested culture
+
+
+            if (culture != null)
+            {
+                var cultureInfo = new System.Globalization.CultureInfo(culture);
+                Thread.CurrentThread.CurrentCulture = cultureInfo;
+            }
+            var selectedCulture = rqf.RequestCulture.Culture;
+
+            ViewData["ctr"] = selectedCulture;
+            // LOCALIZATION //
+            ViewData["MenuHome"] = _localizer["MenuHome"];
+            ViewData["MenuContact"] = _localizer["MenuContact"];
+            ViewData["MenuVisions"] = _localizer["MenuVisions"];
+            ViewData["ContactUs"] = _localizer["ContactUs"];
+            ViewData["MenuProfile"] = _localizer["MenuProfile"];
+            ViewData["AddCommentButton"] = _localizer["AddCommentButton"];
+            ViewData["BuyTicketButton"] = _localizer["BuyTicketButton"];
+            ViewData["MovieNameText"] = _localizer["MovieNameText"];
+            ViewData["MovieYearText"] = _localizer["MovieYearText"];
+            ViewData["MovieTimeText"] = _localizer["MovieTimeText"];
+            ViewData["MovieCategoryText"] = _localizer["MovieCategoryText"];
+            ViewData["MovieLanguageText"] = _localizer["MovieLanguageText"];
+            ViewData["MovieSubjectText"] = _localizer["MovieSubjectText"];
+            // LOCALIZATION //
+
+
 
             var movieComments = (from c in _context.Comments
                                  join m in _context.Movies on c.MovieId equals m.Id
+                                 where c.MovieId==id
                                  select new CommentDTO
                                  {
                                      CommentUserId=c.UserId,

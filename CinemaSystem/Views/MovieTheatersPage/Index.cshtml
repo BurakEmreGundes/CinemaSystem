@@ -7,7 +7,7 @@
 <br />
 
 <div class="container">
-    <h1 class="text-center">Müsait Salonlar</h1>
+    <h1 class="text-center">@ViewData["PageFirstTitle"]</h1>
     <br />
     <div class="row" style="display:flex; justify-content:center; flex-wrap:wrap;">
 
@@ -15,25 +15,17 @@
         {
             <div class="col-md-4 text-center" style="border:5px solid black; margin-left:15px; margin-top:5px; padding-bottom:15px; padding-top:15px;">
                 <div class="card">
-                    <h1 class="card-header">Salon Numarası</h1>
+                    <h1 class="card-header">@ViewData["TheaterNo"]</h1>
                     <div class="card-body">
-                        <a asp-action="MovieSessions" asp-route-id="@item.CinemaTheater.Id"><h1>@item.CinemaTheater.TheaterNo</h1></a>
+                        <a asp-action="MovieSessions" asp-route-movieId="@ViewBag.id" asp-route-culture="@(ViewData["ctr"].ToString()=="tr-TR" ? "tr-TR":"en-US" )" asp-route-id="@item.CinemaTheater.Id"><h1>@item.CinemaTheater.TheaterNo</h1></a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 text-center" style="border: 5px solid black; margin-left: 15px; margin-top: 5px; padding-bottom: 15px; padding-top: 15px; ">
-                <div class="card">
-                    <h1 class="card-header">Salon Numarası</h1>
-                    <div class="card-body">
-                        <a asp-action="MovieSessions" asp-route-id="@item.CinemaTheater.Id"><h1>@item.CinemaTheater.TheaterNo</h1></a>
-                    </div>
-                </div>
-            </div>
-          
-         
-        
+
 
         }
+     
+        
 
     </div>
 </div>
@@ -64,7 +56,7 @@
             <div class="col-sm-10 col-sm-offset-1">
                 <div class="item" data-scrollreveal="enter top over 0.4s after 0.1s">
                     <h1 class="callactiontitle">
-                        Bu haftanın indirim kodu <span class="callactionbutton"><i class="fa fa-gift"></i> WOW24TH</span>
+                        @ViewData["PagePromotionCode"] <span class="callactionbutton"><i class="fa fa-gift"></i> WOW24TH</span>
                     </h1>
                 </div>
             </div>

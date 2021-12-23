@@ -117,8 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ClickForMovieDetail" xml:space="preserve">
-    <value>Click for the details of the movie</value>
+  <data name="AddCommentButton" xml:space="preserve">
+    <value>Add Comment</value>
+  </data>
+  <data name="BuyTicketButton" xml:space="preserve">
+    <value>Buy Ticket</value>
   </data>
   <data name="ContactUs" xml:space="preserve">
     <value>Contact With Us</value>
@@ -135,10 +138,22 @@
   <data name="MenuVisions" xml:space="preserve">
     <value>Visions</value>
   </data>
-  <data name="PageFirstTitle" xml:space="preserve">
-    <value>Movies in Theaters</value>
+  <data name="MovieCategoryText" xml:space="preserve">
+    <value>Category</value>
   </data>
-  <data name="VisionPagePromotionCode" xml:space="preserve">
-    <value>This week's discount code</value>
+  <data name="MovieLanguageText" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="MovieNameText" xml:space="preserve">
+    <value>Movie Name</value>
+  </data>
+  <data name="MovieSubjectText" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="MovieTimeText" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="MovieYearText" xml:space="preserve">
+    <value>Year</value>
   </data>
 </root>

@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using CinemaSystem.Data;
 using CinemaSystem.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Localization;
+using System.Threading;
+using Microsoft.AspNetCore.Localization;
 
 namespace CinemaSystem.Controllers
 {
@@ -15,11 +18,13 @@ namespace CinemaSystem.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<Customer> _userManager;
+        private readonly IStringLocalizer<CommentsController> _localizer;
 
-        public CommentsController(ApplicationDbContext context,UserManager<Customer> userManager)
+        public CommentsController(ApplicationDbContext context,UserManager<Customer> userManager, IStringLocalizer<CommentsController> localizer)
         {
             _context = context;
             _userManager = userManager;
+            _localizer = localizer;
         }
 
 
@@ -51,10 +56,34 @@ namespace CinemaSystem.Controllers
         }
 
         // GET: Comments/Create
-        public IActionResult Create()
+        public IActionResult Create(string culture)
         {
+            var rqf = Request.HttpContext.Features.Get<IRequestCultureFeature>();
+            // Culture contains the information of the requested culture
 
-            //int? id
+
+            if (culture != null)
+            {
+                var cultureInfo = new System.Globalization.CultureInfo(culture);
+                Thread.CurrentThread.CurrentCulture = cultureInfo;
+            }
+            var selectedCulture = rqf.RequestCulture.Culture;
+
+            ViewData["ctr"] = selectedCulture;
+            ViewData["ContactUs"] = _localizer["ContactUs"];
+            ViewData["MenuContact"] = _localizer["MenuContact"];
+            ViewData["MenuHome"] = _localizer["MenuHome"];
+            ViewData["MenuProfile"] = _localizer["MenuProfile"];
+            ViewData["MenuVisions"] = _localizer["MenuVisions"];
+            ViewData["PageFirstTitle"] = _localizer["PageFirstTitle"];
+            ViewData["PagePromotionCode"] = _localizer["PagePromotionCode"];
+            ViewData["AddCommentButton"] = _localizer["AddCommentButton"];
+            ViewData["InputBoxCommentTitle"] = _localizer["InputBoxCommentTitle"];
+            ViewData["InputBoxCommentDesc"] = _localizer["InputBoxCommentDesc"];
+
+            
+
+
             ViewBag.MovieId = TempData["MovieId"];
             return View();
         }

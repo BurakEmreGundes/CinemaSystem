@@ -67,11 +67,11 @@
 
                 }
                 <div class="form-group">
-                    <label asp-for="TheaterChairId" class="control-label"></label>
+                    <label asp-for="TheaterChairId" class="control-label">@ViewData["TheaterChairsPageChairNo"]</label>
                     <select asp-for="TheaterChairId" class="form-control" asp-items="@avaibleTheaterChair"></select>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <input type="submit" value="@ViewData["TheaterChairsPageCreateButton"]" class="btn btn-primary" />
                 </div>
             </form>
         </div>

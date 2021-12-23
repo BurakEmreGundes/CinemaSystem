@@ -64,6 +64,8 @@ namespace CinemaSystem.Controllers
             ViewData["MenuVisions"] = _localizer["MenuVisions"];
             ViewData["ContactUs"] = _localizer["ContactUs"];
             ViewData["MenuProfile"] = _localizer["MenuProfile"];
+            ViewData["SliderTextFirst"] = _localizer["SliderTextFirst"];
+            ViewData["SliderTextSecond"] = _localizer["SliderTextSecond"];
             // LOCALIZATION //
 
 

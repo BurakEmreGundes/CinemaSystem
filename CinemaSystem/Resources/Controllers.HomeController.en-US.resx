@@ -142,7 +142,7 @@
     <value>Support Team</value>
   </data>
   <data name="HomePageSupportDesc" xml:space="preserve">
-    <value>You can contact us at any time using the contact number on our site. You can call for all kinds of problems You can contact us at any time using the contact number on our site. You can call for all kinds of problems and business partnerships.</value>
+    <value>You can contact us at any time using the contact number on our site. You can call for all kinds of problems and business partnerships.</value>
   </data>
   <data name="HomePageThirdBoxDesc" xml:space="preserve">
     <value>Enjoy the movie in our extremely comfortable orthopedic seats.</value>
@@ -167,5 +167,11 @@
   </data>
   <data name="SeeAllVisions" xml:space="preserve">
     <value>See All Featured</value>
+  </data>
+  <data name="SliderTextFirst" xml:space="preserve">
+    <value>Take Your Place in Comfortable Seats Now</value>
+  </data>
+  <data name="SliderTextSecond" xml:space="preserve">
+    <value>Egypt is on Us for Your First Ticket</value>
   </data>
 </root>

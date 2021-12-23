@@ -117,28 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ClickForMovieDetail" xml:space="preserve">
-    <value>Click for the details of the movie</value>
-  </data>
   <data name="ContactUs" xml:space="preserve">
-    <value>Contact With Us</value>
+    <value>Bizimle iletişime geç</value>
   </data>
   <data name="MenuContact" xml:space="preserve">
-    <value>Contact</value>
+    <value>İLETİŞİM</value>
   </data>
   <data name="MenuHome" xml:space="preserve">
-    <value>Home</value>
+    <value>Anasayfa</value>
   </data>
   <data name="MenuProfile" xml:space="preserve">
-    <value>Profile</value>
+    <value>Profİl</value>
   </data>
   <data name="MenuVisions" xml:space="preserve">
-    <value>Visions</value>
+    <value>VİzyondaKİLER</value>
+  </data>
+  <data name="MovieSessionPageButton" xml:space="preserve">
+    <value>Seans Koltuklarını İncele</value>
+  </data>
+  <data name="MovieSessionPageFirstTitle" xml:space="preserve">
+    <value>Film Seansları</value>
   </data>
   <data name="PageFirstTitle" xml:space="preserve">
-    <value>Movies in Theaters</value>
+    <value>Müsait Salonlar</value>
   </data>
-  <data name="VisionPagePromotionCode" xml:space="preserve">
-    <value>This week's discount code</value>
+  <data name="PagePromotionCode" xml:space="preserve">
+    <value>Bu haftanın promosyon kodu</value>
+  </data>
+  <data name="TheaterChairsPageChairNo" xml:space="preserve">
+    <value>Koltuk Numarası</value>
+  </data>
+  <data name="TheaterChairsPageCreateButton" xml:space="preserve">
+    <value>Bilet Al</value>
+  </data>
+  <data name="TheaterNo" xml:space="preserve">
+    <value>Salon Numarası</value>
   </data>
 </root>

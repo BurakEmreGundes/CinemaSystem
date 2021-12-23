@@ -15,32 +15,32 @@
         <div class="col-md-6">
 
             <h4 style="display:block;">
-                Film Adı:  @Model.MovieName
+                @ViewData["MovieNameText"]:  @Model.MovieName
             </h4>
             <h4 style="display:block;">
-                Yıl: @Model.Year
+                @ViewData["MovieYearText"]: @Model.Year
             </h4>
             <h4 style="display:block;">
-                Film Süresi:  @Model.Time Dakika
+                @ViewData["MovieTimeText"]:  @Model.Time Dakika
             </h4>
             <h4 style="display:block;">
                 IMDB:  @Model.IMDB_Puan
             </h4>
             <h4 style="display:block;">
-                Kategori: @Model.Category.CategoryName
+                @ViewData["MovieCategoryText"]: @Model.Category.CategoryName
             </h4>
             <h4 style="display:block;">
-                Dil: @Model.Language.LanguageName
+                @ViewData["MovieLanguageText"]: @Model.Language.LanguageName
             </h4>
             <h4 style="display:block;">
-                Konu: @Model.Subject
+                @ViewData["MovieSubjectText"]: @Model.Subject
             </h4>
 
             @if (SignInManager.IsSignedIn(User) && User.IsInRole("NormalUser"))
             {
         <p style="display:block;" class="text-center" style="width:100%;">
-            <a asp-action="Index" asp-controller="MovieTheatersPage" asp-route-id="@Model.Id" style="background-color: #00bba7; text-decoration:none; font-size:medium; color:black; padding-right:12px; padding-left:12px; padding-top:6px; padding-bottom:6px; margin-top:10px; width:80%; font-size:18px; font-weight:700; border-radius:10px;
-">Bilet Al</a>
+            <a asp-action="Index" asp-route-culture="@(ViewData["ctr"].ToString()=="tr-TR" ? "tr-TR":"en-US" )" asp-controller="MovieTheatersPage" asp-route-id="@Model.Id" style="background-color: #00bba7; text-decoration:none; font-size:medium; color:black; padding-right:12px; padding-left:12px; padding-top:6px; padding-bottom:6px; margin-top:10px; width:80%; font-size:18px; font-weight:700; border-radius:10px;
+">@ViewData["BuyTicketButton"]</a>
         </p>
             }
         </div>
@@ -63,8 +63,8 @@
             @{ TempData["MovieId"] = Model.Id; }
             @if (SignInManager.IsSignedIn(User) && User.IsInRole("NormalUser"))
             {
-        <a asp-action="Create" asp-controller="Comments" style="background-color: #00bba7; text-decoration:none; font-size:medium; color:black; padding-right:12px; padding-left:12px; padding-top:6px; padding-bottom:6px; font-weight:700; border-radius:10px;
-">Yorum Ekle</a>
+        <a asp-action="Create" asp-route-culture="@(ViewData["ctr"].ToString()=="tr-TR" ? "tr-TR":"en-US" )" asp-controller="Comments" style="background-color: #00bba7; text-decoration:none; font-size:medium; color:black; padding-right:12px; padding-left:12px; padding-top:6px; padding-bottom:6px; font-weight:700; border-radius:10px;
+">@ViewData["AddCommentButton"]</a>
             }
         </div>
         @foreach (var item in ViewBag.movieComments)

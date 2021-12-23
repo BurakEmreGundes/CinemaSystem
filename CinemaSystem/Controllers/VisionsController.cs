@@ -39,8 +39,19 @@ namespace CinemaSystem.Controllers
             }
             var selectedCulture = rqf.RequestCulture.Culture;
 
+            // LOCALIZATION //
             ViewData["ctr"] = selectedCulture;
             ViewData["Vision"] = _localizer["Deneme"];
+            ViewData["MenuHome"] = _localizer["MenuHome"];
+            ViewData["MenuContact"] = _localizer["MenuContact"];
+            ViewData["MenuVisions"] = _localizer["MenuVisions"];
+            ViewData["ContactUs"] = _localizer["ContactUs"];
+            ViewData["MenuProfile"] = _localizer["MenuProfile"];
+            ViewData["PageFirstTitle"] = _localizer["PageFirstTitle"];
+            ViewData["ClickForMovieDetail"] = _localizer["ClickForMovieDetail"];
+            ViewData["VisionPagePromotionCode"] = _localizer["VisionPagePromotionCode"];
+            // LOCALIZATION //
+
 
 
 
