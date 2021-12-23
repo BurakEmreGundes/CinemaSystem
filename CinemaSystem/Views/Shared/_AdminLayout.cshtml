@@ -24,7 +24,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" asp-action="Admin" asp-controller="Index">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" asp-action="Index" asp-controller="Admin">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -36,7 +36,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" asp-action="Index" asp-controller="Admin">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Settings</span>
                 </a>
@@ -184,8 +184,8 @@
                 <div id="collapseTwo9" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                     
-                        <a class="collapse-item" asp-controller="Admin" asp-action="MovieSessionList">List Cinema Theater</a>
-                        <a class="collapse-item" asp-controller="Admin" asp-action="MovieSessionCreate">Add Cinema Theater</a>
+                        <a class="collapse-item" asp-controller="Admin" asp-action="MovieSessionList">List Movie Sessions</a>
+                        <a class="collapse-item" asp-controller="Admin" asp-action="MovieSessionCreate">Add Movie Session</a>
                     </div>
                 </div>
             </li>
@@ -212,8 +212,8 @@
                 <div id="collapseTwo11" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                       
-                        <a class="collapse-item" asp-controller="Admin" asp-action="CinemaTheaterMovieList">List Cinema Theater Movies</a>
-                        <a class="collapse-item" asp-controller="Admin" asp-action="CinemaTheaterMovieCreate">Add Cinema Theater Movies</a>
+                        <a class="collapse-item" asp-controller="Admin" asp-action="CinemaTheaterMovieList">List Cinema Theater M.</a>
+                        <a class="collapse-item" asp-controller="Admin" asp-action="CinemaTheaterMovieCreate">Add Cinema Theater M.</a>
                     </div>
                 </div>
             </li>

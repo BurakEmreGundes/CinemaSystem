@@ -1,5 +1,6 @@
 ﻿using CinemaSystem.Data;
 using CinemaSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,7 @@ namespace CinemaSystem.Controllers
         {
             _context = context;
         }
+        [Authorize]
         public async Task<IActionResult> Index(int? id)
         {
             if (id == null)
@@ -31,6 +33,7 @@ namespace CinemaSystem.Controllers
             ViewBag.ctbymi = await cinemaTheatersByMovieId.Where(x=>x.MovieId==id && x.FinishedDate>DateTime.Now.Date).ToListAsync();
             return View();
         }
+        [Authorize]
         public async Task<IActionResult> MovieSessions(int? id)
         {
             if (id == null)
@@ -43,7 +46,7 @@ namespace CinemaSystem.Controllers
             return View();
 
         }
-
+        [Authorize]
         public async Task<IActionResult> TheaterChairs(int? id)
         {
             if (id == null)
@@ -80,7 +83,7 @@ namespace CinemaSystem.Controllers
 
 
         }
-
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateTicket([Bind("Id,MovieSessionId,BuyDate,Price,Number,UserId,TheaterChairId")] MovieTicket movieTicket)

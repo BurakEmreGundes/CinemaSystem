@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CinemaSystem.Data;
 using CinemaSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CinemaSystem.Controllers
 {
+   
     public class ActorRolesController : Controller
     {
         private readonly ApplicationDbContext _context;

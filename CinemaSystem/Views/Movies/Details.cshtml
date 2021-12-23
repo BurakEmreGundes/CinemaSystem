@@ -1,8 +1,8 @@
 ﻿@model CinemaSystem.Models.Movie
-
-@{
-    ViewData["Title"] = "Details";
-}
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Customer> SignInManager
+@inject UserManager<Customer> UserManager
+@{ ViewData["Title"] = "Details"; }
 
 <h1 style="margin-top:100px;"></h1>
 
@@ -13,37 +13,38 @@
         </div>
 
         <div class="col-md-6">
-            
-                <h4 style="display:block;" >
-                    Film Adı:  @Model.MovieName
-                </h4>
-                <h4 style="display:block;" >
-                    Yıl: @Model.Year
-                </h4>
-                <h4 style="display:block;" >
-                    Film Süresi:  @Model.Time Dakika
-                </h4>
-                <h4 style="display:block;" >
-                    IMDB:  @Model.IMDB_Puan
-                </h4>
-                <h4 style="display:block;" >
-                    Kategori: @Model.Category.CategoryName
-                </h4>
-                <h4 style="display:block;" >
-                    Dil: @Model.Language.LanguageName 
-                </h4>
-                <h4 style="display:block;" >
-                    Konu: @Model.Subject
-                </h4>
-              
-                
-                <p style="display:block;" class="text-center" style="width:100%;">
-                    <a asp-action="Index" asp-controller="MovieTheatersPage" asp-route-id="@Model.Id" style="background-color: #00bba7; text-decoration:none; font-size:medium; color:black; padding-right:12px; padding-left:12px; padding-top:6px; padding-bottom:6px; margin-top:10px; width:80%; font-size:18px; font-weight:700; border-radius:10px;
+
+            <h4 style="display:block;">
+                Film Adı:  @Model.MovieName
+            </h4>
+            <h4 style="display:block;">
+                Yıl: @Model.Year
+            </h4>
+            <h4 style="display:block;">
+                Film Süresi:  @Model.Time Dakika
+            </h4>
+            <h4 style="display:block;">
+                IMDB:  @Model.IMDB_Puan
+            </h4>
+            <h4 style="display:block;">
+                Kategori: @Model.Category.CategoryName
+            </h4>
+            <h4 style="display:block;">
+                Dil: @Model.Language.LanguageName
+            </h4>
+            <h4 style="display:block;">
+                Konu: @Model.Subject
+            </h4>
+
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("NormalUser"))
+            {
+        <p style="display:block;" class="text-center" style="width:100%;">
+            <a asp-action="Index" asp-controller="MovieTheatersPage" asp-route-id="@Model.Id" style="background-color: #00bba7; text-decoration:none; font-size:medium; color:black; padding-right:12px; padding-left:12px; padding-top:6px; padding-bottom:6px; margin-top:10px; width:80%; font-size:18px; font-weight:700; border-radius:10px;
 ">Bilet Al</a>
-                </p>
-         
+        </p>
+            }
         </div>
-     
+
     </div>
 
     <div class="row" style="margin-top:40px; display:flex; justify-content:center;">
@@ -51,34 +52,34 @@
             <iframe width="100%" height="370" src="@Model.Fragment" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
-    
 
 
-  
+
+
     <div class="row" style="margin-top:40px; margin-bottom:20px;">
 
         <div class="col-md-12 text-center">
-       
-            @{ 
-                TempData["MovieId"] = Model.Id;
-            }
-            <a asp-action="Create" asp-controller="Comments" style="background-color: #00bba7; text-decoration:none; font-size:medium; color:black; padding-right:12px; padding-left:12px; padding-top:6px; padding-bottom:6px; font-weight:700; border-radius:10px;
+
+            @{ TempData["MovieId"] = Model.Id; }
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("NormalUser"))
+            {
+        <a asp-action="Create" asp-controller="Comments" style="background-color: #00bba7; text-decoration:none; font-size:medium; color:black; padding-right:12px; padding-left:12px; padding-top:6px; padding-bottom:6px; font-weight:700; border-radius:10px;
 ">Yorum Ekle</a>
+            }
         </div>
         @foreach (var item in ViewBag.movieComments)
         {
-            <div class="col-md-12" style="margin-top:5px; border-radius:50px;">
-                <div class="card" style="width: 100%; background-color: #e5f0f1; padding-left:30px; padding-right:30px; padding-top:10px; padding-bottom:10px;">
-                    <div class="card-body">
-                        <h5 class="card-title">@item.UserName</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">@item.CommentTitle</h6>
-                        <p class="card-text">@item.CommentDescription</p>
-                    </div>
-                </div>
-            </div>
-        }
+<div class="col-md-12" style="margin-top:5px; border-radius:50px;">
+    <div class="card" style="width: 100%; background-color: #e5f0f1; padding-left:30px; padding-right:30px; padding-top:10px; padding-bottom:10px;">
+        <div class="card-body">
+            <h5 class="card-title">@item.UserName</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@item.CommentTitle</h6>
+            <p class="card-text">@item.CommentDescription</p>
+        </div>
+    </div>
+</div>}
 
-  
+
     </div>
 
 </div>
