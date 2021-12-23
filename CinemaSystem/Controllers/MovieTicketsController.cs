@@ -155,7 +155,7 @@ namespace CinemaSystem.Controllers
             var movieTicket = await _context.MovieTickets.FindAsync(id);
             _context.MovieTickets.Remove(movieTicket);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Tickets", "User");
         }
 
         private bool MovieTicketExists(int id)

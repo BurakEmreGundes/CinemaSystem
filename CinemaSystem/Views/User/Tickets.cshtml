@@ -1,0 +1,31 @@
+﻿@{ Layout = "_UserLayout"; }
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+
+        @foreach (var item in ViewBag.tickets)
+        {
+    <div class="col-md-4">
+        <div class="card" >
+            <div class="card-body text-center">
+                <h4 class="card-title text-center"> @item.MovieSession.CinemaTheaterMovie.Movie.MovieName</h4>
+
+
+
+                <h5 class="card-title text-center">Salon No: @item.MovieSession.CinemaTheaterMovie.CinemaTheater.TheaterNo</h5>
+                <h5 class="card-title text-center">Koltuk No: @item.TheaterChair.ChairCode</h5>
+
+                <h6 class="card-subtitle mb-2 mt-4  text-muted">Saat: @item.MovieSession.StartedDate - @item.MovieSession.FinishedDate</h6>
+                <a asp-action="DeleteTicket" asp-route-id="@item.Id" class="btn btn-danger mt-3">Bileti Sil</a>
+            </div>
+        </div>
+    </div>
+ 
+
+
+ }
+
+
+
+    </div>
+</div>

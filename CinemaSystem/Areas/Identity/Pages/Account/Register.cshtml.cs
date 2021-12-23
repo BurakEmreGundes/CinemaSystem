@@ -46,6 +46,17 @@ namespace CinemaSystem.Areas.Identity.Pages.Account
 
         public class InputModel
         {
+
+            [Required]
+            public string Name { get; set; }
+
+            [Required]
+            public string Surname { get; set; }
+
+            [Required]
+            [DataType(DataType.Date)]
+            public DateTime Birthday { get; set; }
+
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -62,10 +73,7 @@ namespace CinemaSystem.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
-            /*
-            [Required]
-            public string Role { get; set; }
-            */
+       
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -80,7 +88,7 @@ namespace CinemaSystem.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new Customer { UserName = Input.Email, Email = Input.Email };
+                var user = new Customer {Name=Input.Name,Surname=Input.Surname, UserName = Input.Email, Email = Input.Email,Birthday=Input.Birthday };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

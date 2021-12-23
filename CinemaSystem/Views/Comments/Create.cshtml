@@ -12,45 +12,49 @@
 <br />
 <br />
 
-<h1>Create</h1>
-<br />
-<h4>Comment</h4>
-<h5></h5>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="MovieId" class="control-label"></label>
-                <input asp-for="MovieId" value="@(ViewBag.MovieId)" type="hidden" class="form-control" />
-            </div>
-            <div class="form-group">
 
-               @* <label asp-for="UserId" class="control-label"></label>*@
-                <input asp-for="UserId" value="@UserManager.GetUserId(User)" type="hidden" class="form-control" />
-                <span asp-validation-for="UserId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="container">
+    <h1 class="text-center">Yorum Ekle</h1>
+    <div class="row" style="display:flex; justify-content:center;">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    @*<label asp-for="MovieId" class="control-label"></label>*@
+                    <input asp-for="MovieId" value="@(ViewBag.MovieId)" type="hidden" class="form-control" />
+                </div>
+                <div class="form-group">
+
+                    @* <label asp-for="UserId" class="control-label"></label>*@
+                    <input asp-for="UserId" value="@UserManager.GetUserId(User)" type="hidden" class="form-control" />
+                    <span asp-validation-for="UserId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <br />
+                
+                <div class="form-group text-center">
+                    <input type="submit" value="Yorum Ekle" class="btn btn-primary" style="font-size:18px;" />
+                </div>
+            </form>
+        </div>
     </div>
+
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<br />
+<br />
+<br />
+<br />
+<br />
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

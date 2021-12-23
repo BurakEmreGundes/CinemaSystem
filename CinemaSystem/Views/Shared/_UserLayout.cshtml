@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Customer> SignInManager
+@inject UserManager<Customer> UserManager
+
+
+@{ TempData["UserId"] = UserManager.GetUserId(User); }
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -13,7 +20,7 @@
     <!-- Custom styles for this template-->
     <link href="~/Admin/css/sb-admin-2.min.css" rel="stylesheet">
 
-    
+
 </head>
 <body id="page-top">
 
@@ -24,11 +31,11 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" asp-action="Admin" asp-controller="Index">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" asp-controller="User" asp-action="Index">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Admin Panel</div>
+                <div class="sidebar-brand-text mx-3">User Profile</div>
             </a>
 
             <!-- Divider -->
@@ -38,7 +45,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="index.html">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Settings</span>
+                    <span>Seçenekler</span>
                 </a>
             </li>
 
@@ -50,176 +57,24 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Category</span>
+                    <span>Biletlerim</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                        
-                        <a class="collapse-item" asp-controller="Admin" asp-action="CategoryList">Category List</a>
-                        <a class="collapse-item" asp-controller="Admin" asp-action="CategoryCreate">Add Category</a>
+                        <a class="collapse-item" asp-controller="User" asp-action="Tickets">Biletleri Göster</a>
+                        <a class="collapse-item" asp-controller="Visions" asp-action="Index">Bilet Al</a>
                     </div>
                 </div>
             </li>
 
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo1"
-                   aria-expanded="true" aria-controls="collapseTwo1">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Movie</span>
-                </a>
-                <div id="collapseTwo1" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        
-                        <a class="collapse-item" asp-controller="Admin" asp-action="MovieList">List Movie</a>
-                        <a class="collapse-item" asp-controller="Admin" asp-action="MovieCreate">Add Movie</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2"
-                   aria-expanded="true" aria-controls="collapseTwo2">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Actor</span>
-                </a>
-                <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                      
-                        <a class="collapse-item" asp-controller="Admin" asp-action="ActorList">List Actor</a>
-                        <a class="collapse-item" asp-controller="Admin" asp-action="ActorCreate">Add Actor</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo3"
-                   aria-expanded="true" aria-controls="collapseTwo3">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Director</span>
-                </a>
-                <div id="collapseTwo3" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                 
-                        <a class="collapse-item" asp-controller="Admin" asp-action="DirectorList">List Director</a>
-                        <a class="collapse-item" asp-controller="Admin" asp-action="DirectorCreate">Add Director</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo4"
-                   aria-expanded="true" aria-controls="collapseTwo4">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Movie Actor</span>
-                </a>
-                <div id="collapseTwo4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                
-                        <a class="collapse-item" asp-controller="Admin" asp-action="MovieActorList">List Movie Actor</a>
-                        <a class="collapse-item" asp-controller="Admin" asp-action="MovieActorCreate">Add Movie Actor</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo5"
-                   aria-expanded="true" aria-controls="collapseTwo5">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Movie Director</span>
-                </a>
-                <div id="collapseTwo5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                     
-                        <a class="collapse-item" asp-controller="Admin" asp-action="MovieDirectorList">List Movie Director</a>
-                        <a class="collapse-item" asp-controller="Admin" asp-action="MovieDirectorCreate">Add Movie Director</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo6"
-                   aria-expanded="true" aria-controls="collapseTwo6">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Actor Roles</span>
-                </a>
-                <div id="collapseTwo6" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        
-                        <a class="collapse-item" asp-controller="Admin" asp-action="ActorRoleList">List Actor Role</a>
-                        <a class="collapse-item" asp-controller="Admin" asp-action="ActorRoleCreate">Add Actor Role</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo7"
-                   aria-expanded="true" aria-controls="collapseTwo7">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Cinemas</span>
-                </a>
-                <div id="collapseTwo7" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        
-                        <a class="collapse-item" asp-controller="Admin" asp-action="CinemaList">List Cinema</a>
-                        <a class="collapse-item" asp-controller="Admin" asp-action="CinemaCreate">Add Cinema</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo8"
-                   aria-expanded="true" aria-controls="collapseTwo8">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Cinema Theaters</span>
-                </a>
-                <div id="collapseTwo8" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                      
-                        <a class="collapse-item" asp-controller="Admin" asp-action="CinemaTheaterList">List Cinema Theater</a>
-                        <a class="collapse-item" asp-controller="Admin" asp-action="CinemaTheaterCreate">Add Cinema Theater</a>
-                    </div>
-                </div>
-            </li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo9"
-                   aria-expanded="true" aria-controls="collapseTwo9">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Movie Sessions</span>
-                </a>
-                <div id="collapseTwo9" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                    
-                        <a class="collapse-item" asp-controller="Admin" asp-action="MovieSessionList">List Cinema Theater</a>
-                        <a class="collapse-item" asp-controller="Admin" asp-action="MovieSessionCreate">Add Cinema Theater</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo10"
-                   aria-expanded="true" aria-controls="collapseTwo10">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Theater Chairs</span>
-                </a>
-                <div id="collapseTwo10" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-              
-                        <a class="collapse-item" asp-controller="Admin" asp-action="TheaterChairList">List Theater Chair</a>
-                        <a class="collapse-item" asp-controller="Admin" asp-action="TheaterChairCreate">Add Theater Chair</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo11"
-                   aria-expanded="true" aria-controls="collapseTwo11">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Cinema Theater Movies</span>
-                </a>
-                <div id="collapseTwo11" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                      
-                        <a class="collapse-item" asp-controller="Admin" asp-action="CinemaTheaterMovieList">List Cinema Theater Movies</a>
-                        <a class="collapse-item" asp-controller="Admin" asp-action="CinemaTheaterMovieCreate">Add Cinema Theater Movies</a>
-                    </div>
-                </div>
-            </li>
-           
 
-           
+
+
+
+
 
 
         </ul>
@@ -446,7 +301,7 @@
         </div>
 
 
-     
+
     </div>
     <!-- Bootstrap core JavaScript-->
     <script src="~/Admin/vendor/jquery/jquery.min.js"></script>
