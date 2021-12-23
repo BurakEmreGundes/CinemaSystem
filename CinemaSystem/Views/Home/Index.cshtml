@@ -13,9 +13,9 @@
             <div class="col-md-4">
                 <div class="col editContent">
                     <span class="numberstep">1</span>
-                    <h3 class="numbertext">Bİletİnİ Al</h3>
+                    <h3 class="numbertext">@ViewData["HomePageFirstBoxTitle"]</h3>
                     <p>
-                      Site üzerinden kayıt olarak Dilediğiniz filme kolay bir şekilde bilet alabilirsiniz.
+                        @ViewData["HomePageFirstBoxDesc"]
                     </p>
                     <br />
                 </div>
@@ -25,9 +25,9 @@
             <div class="col-md-4 editContent">
                 <div class="col">
                     <span class="numberstep">2</span>
-                    <h3 class="numbertext">Sİnemamızı Zİyaret Et</h3>
+                    <h3 class="numbertext">@ViewData["HomePageSecondBoxTitle"]</h3>
                     <p>
-                        Biletinizle sinemamızı ziyaret edip, siteden aldığınız bilet ile indirimli yiyeceklere sahip olabilirsiniz.
+                        @ViewData["HomePageSecondBoxDesc"]
                     </p>
                     <br />
                 </div>
@@ -37,9 +37,9 @@
             <div class="col-md-4 editContent">
                 <div class="col">
                     <span class="numberstep">3</span>
-                    <h3 class="numbertext">Fİlmİn Tadını Çıkart</h3>
+                    <h3 class="numbertext"> @ViewData["HomePageThirdBoxTitle"]</h3>
                     <p>
-                       Son derece rahat ortopedik koltuklarımızda filmin tadını keyifle çıkartın.
+                        @ViewData["HomePageThirdBoxDesc"]
                     </p>
                     <br />
                 </div>
@@ -54,10 +54,11 @@
     <div class="container">
         <div class="underlined-title">
             <div class="editContent">
-                <h1 class="text-center latestitems">Vİzyondakİ Fİlmler</h1>
+                <h1 class="text-center latestitems">@ViewData["PageFirstTitle"]</h1>
             </div>
 
         </div>
+        <br />
         <div class="row">
             @foreach (var item in ViewBag.movies)
             {<!-- /.productbox -->
@@ -68,7 +69,7 @@
                             <div class="captionshop text-center" style="display: none;">
                                 <h3>@(item.MovieName)</h3>
                                 <p>
-                                    Filmin Detayları İçin Tıklayınız
+                                   @ViewData["ClickForMovieDetail"]
                                 </p>
                                 <p>
                                     <a asp-action="Details" asp-route-id="@item.MovieID" asp-controller="Movies" class="learn-more detailslearn"><i class="fa fa-link"></i> Details</a>
@@ -96,7 +97,7 @@
 <div class="item content">
     <div class="container text-center">
         <a asp-action="Index"  asp-controller="Visions" class="homebrowseitems">
-            Tüm Vizyondakileri Gör
+            @ViewData["SeeAllVisions"]
             <div class="homebrowseitemsicon">
                 <i class="fa fa-star fa-spin"></i>
             </div>
@@ -159,10 +160,10 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="slide-text">
                 <div>
-                    <h2><span class="uppercase">Destek Ekibi</span></h2>
+                    <h2><span class="uppercase">@ViewData["HomePageSupport"]</span></h2>
                     <img src="http://wowthemes.net/demo/salique/salique-boxed/images/temp/avatar2.png" alt="Awesome Support">
                     <p>
-                        Sitemizde yer alan iletişim numarasını kullanarak dilediğiniz zaman bizimle iletişime geçebilirsiniz. Her türlü sorun ve iş ortaklığı için arayabilirsiniz.
+                        @ViewData["HomePageSupportDesc"]
                     </p>
                   
                 </div>
@@ -179,7 +180,7 @@
             <div class="col-sm-10 col-sm-offset-1">
                 <div class="item" data-scrollreveal="enter top over 0.4s after 0.1s">
                     <h1 class="callactiontitle">
-                        Bu haftanın indirim kodu <span class="callactionbutton"><i class="fa fa-gift"></i> WOW24TH</span>
+                        @ViewData["HomePagePromotionCode"] <span class="callactionbutton"><i class="fa fa-gift"></i> WOW24TH</span>
                     </h1>
                 </div>
             </div>

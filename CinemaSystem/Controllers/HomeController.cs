@@ -1,13 +1,16 @@
 ﻿using CinemaSystem.Data;
 using CinemaSystem.Data.DTOs;
 using CinemaSystem.Models;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CinemaSystem.Controllers
@@ -16,13 +19,46 @@ namespace CinemaSystem.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public HomeController(ApplicationDbContext context)
+        private readonly IStringLocalizer<HomeController> _localizer;
+
+        public HomeController(ApplicationDbContext context, IStringLocalizer<HomeController> localizer)
         {
             _context = context;
+            _localizer = localizer;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string culture)
         {
+           
+
+            var rqf = Request.HttpContext.Features.Get<IRequestCultureFeature>();
+            // Culture contains the information of the requested culture
+
+
+            if (culture != null)
+            {
+                var cultureInfo = new System.Globalization.CultureInfo(culture);
+                Thread.CurrentThread.CurrentCulture = cultureInfo;
+            }
+            var selectedCulture = rqf.RequestCulture.Culture;
+
+            ViewData["ctr"] = selectedCulture;
+
+            ViewData["deneme"] = _localizer["Deneme"];
+
+            ViewData["HomePageFirstBoxTitle"] = _localizer["HomePageFirstBoxTitle"];
+            ViewData["HomePageFirstBoxDesc"] = _localizer["HomePageFirstBoxDesc"];
+            ViewData["HomePageSecondBoxTitle"] = _localizer["HomePageSecondBoxTitle"];
+            ViewData["HomePageSecondBoxDesc"] = _localizer["HomePageSecondBoxDesc"];
+            ViewData["HomePageThirdBoxTitle"] = _localizer["HomePageThirdBoxTitle"];
+            ViewData["HomePageThirdBoxDesc"] = _localizer["HomePageThirdBoxDesc"];
+            @ViewData["PageFirstTitle"] = _localizer["PageFirstTitle"];
+            @ViewData["ClickForMovieDetail"] = _localizer["ClickForMovieDetail"];
+            @ViewData["SeeAllVisions"] = _localizer["SeeAllVisions"];
+            @ViewData["HomePageSupport"] = _localizer["HomePageSupport"];
+            @ViewData["HomePageSupportDesc"] = _localizer["HomePageSupportDesc"];
+            @ViewData["HomePagePromotionCode"] = _localizer["HomePagePromotionCode"];
+
 
             var visionFilmList = (from ctm in _context.CinemaTheaterMovies
                                   join m in _context.Movies on ctm.MovieId equals m.Id

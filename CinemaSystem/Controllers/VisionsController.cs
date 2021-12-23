@@ -1,9 +1,12 @@
 ﻿using CinemaSystem.Data;
 using CinemaSystem.Data.DTOs;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CinemaSystem.Controllers
@@ -12,14 +15,35 @@ namespace CinemaSystem.Controllers
     {
 
         private readonly ApplicationDbContext _context;
+        private readonly IStringLocalizer<VisionsController> _localizer;
 
-        public VisionsController(ApplicationDbContext context)
+     
+
+        public VisionsController(ApplicationDbContext context, IStringLocalizer<VisionsController> localizer)
         {
             _context = context;
+            _localizer = localizer;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string culture)
         {
+            
+            var rqf = Request.HttpContext.Features.Get<IRequestCultureFeature>();
+            // Culture contains the information of the requested culture
+
+
+            if (culture != null)
+            {
+                var cultureInfo = new System.Globalization.CultureInfo(culture);
+                Thread.CurrentThread.CurrentCulture = cultureInfo;
+            }
+            var selectedCulture = rqf.RequestCulture.Culture;
+
+            ViewData["ctr"] = selectedCulture;
+            ViewData["Vision"] = _localizer["Deneme"];
+
+
+
             var visionFilmList = (from ctm in _context.CinemaTheaterMovies
                                   join m in _context.Movies on ctm.MovieId equals m.Id
                                   select new MovieDTO
