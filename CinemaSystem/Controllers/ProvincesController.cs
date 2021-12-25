@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CinemaSystem.Data;
 using CinemaSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CinemaSystem.Controllers
 {
@@ -19,12 +20,14 @@ namespace CinemaSystem.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Provinces
         public async Task<IActionResult> Index()
         {
             return View(await _context.Provinces.ToListAsync());
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Provinces/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -43,6 +46,7 @@ namespace CinemaSystem.Controllers
             return View(province);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Provinces/Create
         public IActionResult Create()
         {
@@ -65,6 +69,8 @@ namespace CinemaSystem.Controllers
             return View(province);
         }
 
+
+        [Authorize(Roles = "Admin")]
         // GET: Provinces/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -116,6 +122,8 @@ namespace CinemaSystem.Controllers
             return View(province);
         }
 
+
+        [Authorize(Roles = "Admin")]
         // GET: Provinces/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CinemaSystem.Data;
 using CinemaSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CinemaSystem.Controllers
 {
@@ -19,6 +20,7 @@ namespace CinemaSystem.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: MovieTickets
         public async Task<IActionResult> Index()
         {
@@ -26,6 +28,7 @@ namespace CinemaSystem.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: MovieTickets/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -46,6 +49,7 @@ namespace CinemaSystem.Controllers
             return View(movieTicket);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: MovieTickets/Create
         public IActionResult Create()
         {
@@ -72,6 +76,7 @@ namespace CinemaSystem.Controllers
             return View(movieTicket);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: MovieTickets/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -127,6 +132,7 @@ namespace CinemaSystem.Controllers
             return View(movieTicket);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: MovieTickets/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

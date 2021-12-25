@@ -1,4 +1,5 @@
 ﻿using CinemaSystem.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace CinemaSystem.Controllers
 {
+    [Authorize(Roles = "NormalUser")]
     public class UserController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -16,11 +18,12 @@ namespace CinemaSystem.Controllers
         {
             _context = context;
         }
+      
         public IActionResult Index()
         {
             return View();
         }
-
+      
         public async Task<IActionResult> Tickets()
         {
             var tickets = await _context.MovieTickets

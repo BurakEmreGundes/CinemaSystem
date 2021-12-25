@@ -33,10 +33,14 @@ namespace CinemaSystem.Data
                 await roleManager.CreateAsync(new CustomerRole { Name = "Admin" });
                 await roleManager.CreateAsync(new CustomerRole { Name = "NormalUser" });
 
+              /*  await context.Genders.AddAsync(new Gender { GenderType="Kadın"});
+                await context.Genders.AddAsync(new Gender { GenderType = "Erkek" });
+                await context.Genders.AddAsync(new Gender { GenderType = "Diğer" });
 
+                await context.Categories.AddAsync(new Category { CategoryName="Komedi" });
+                await context.Categories.AddAsync(new Category { CategoryName="Bilim Kurgu" });
 
-                await userManager.AddToRoleAsync(student, "Admin");
-                await userManager.AddToRoleAsync(normalUser, "NormalUser");
+                //await context.*/
 
 
                 logger.LogInformation("Çekirdek veriler başarıyla yazıldı.");

@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Localization;
 using System.Threading;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CinemaSystem.Controllers
 {
@@ -32,6 +33,7 @@ namespace CinemaSystem.Controllers
             _localizer = localizer;
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Movies
         public async Task<IActionResult> Index()
         {
@@ -112,6 +114,7 @@ namespace CinemaSystem.Controllers
             return View(movie);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Movies/Create
         public IActionResult Create()
         {
@@ -154,6 +157,7 @@ namespace CinemaSystem.Controllers
              return RedirectToAction("MovieCreate", "Admin");
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Movies/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -209,6 +213,7 @@ namespace CinemaSystem.Controllers
             return RedirectToAction("MovieEdit", "Admin");
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Movies/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

@@ -1,5 +1,6 @@
 ﻿using CinemaSystem.Data;
 using CinemaSystem.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,12 +31,14 @@ namespace WebAPI.MovieData
 
         public List<Movie> GetAll()
         {
-            return _context.Movies.ToList();
+            return _context.Movies
+                .Include(m=>m.Category)
+                .Include(m=>m.Language).ToList();
         }
 
         public Movie GetById(int id)
         {
-            return _context.Movies.SingleOrDefault(x=>x.Id==id);
+            return _context.Movies.Include(m=>m.Category).Include(m=>m.Language).SingleOrDefault(x=>x.Id==id);
         }
 
         public void Update(Movie movie)

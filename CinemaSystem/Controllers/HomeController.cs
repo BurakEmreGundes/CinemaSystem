@@ -95,20 +95,7 @@ namespace CinemaSystem.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
-        public IActionResult Deneme()
-        {
-            ViewBag.movies = _context.Movies
-                 .Include(m => m.Language)
-                 .Include(m => m.Category).Take(3).ToList();
-
-            ViewBag.categories = _context.Categories.ToList(); ;
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

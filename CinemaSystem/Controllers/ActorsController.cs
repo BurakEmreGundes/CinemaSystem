@@ -22,6 +22,7 @@ namespace CinemaSystem.Controllers
         }
 
         // GET: Actors
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Actors.Include(a => a.ActorRole).Include(a => a.Country).Include(a => a.Gender);
@@ -29,6 +30,7 @@ namespace CinemaSystem.Controllers
         }
 
         // GET: Actors/Details/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -49,7 +51,7 @@ namespace CinemaSystem.Controllers
             return View(actor);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         // GET: Actors/Create
         public IActionResult Create()
         {
@@ -79,6 +81,7 @@ namespace CinemaSystem.Controllers
         }
 
         // GET: Actors/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -136,6 +139,7 @@ namespace CinemaSystem.Controllers
         }
 
         // GET: Actors/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

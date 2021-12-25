@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Localization;
 using System.Threading;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CinemaSystem.Controllers
 {
@@ -28,7 +29,7 @@ namespace CinemaSystem.Controllers
         }
 
 
-
+        [Authorize(Roles = "Admin")]
         // GET: Comments
         public async Task<IActionResult> Index()
         {
@@ -36,6 +37,7 @@ namespace CinemaSystem.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Comments/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -55,6 +57,7 @@ namespace CinemaSystem.Controllers
             return View(comment);
         }
 
+        [Authorize(Roles = "NormalUser")]
         // GET: Comments/Create
         public IActionResult Create(string culture)
         {
@@ -106,6 +109,7 @@ namespace CinemaSystem.Controllers
             return RedirectToAction("Details", "Movies", new { Id = comment.MovieId });
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Comments/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -159,6 +163,7 @@ namespace CinemaSystem.Controllers
             return View(comment);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Comments/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {

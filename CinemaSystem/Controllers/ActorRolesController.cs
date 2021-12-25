@@ -21,12 +21,14 @@ namespace CinemaSystem.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: ActorRoles
         public async Task<IActionResult> Index()
         {
             return View(await _context.ActorRoles.ToListAsync());
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: ActorRoles/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -45,6 +47,7 @@ namespace CinemaSystem.Controllers
             return View(actorRole);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: ActorRoles/Create
         public IActionResult Create()
         {
@@ -67,6 +70,7 @@ namespace CinemaSystem.Controllers
             return RedirectToAction("ActorRoleList", "Admin");
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: ActorRoles/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -118,6 +122,7 @@ namespace CinemaSystem.Controllers
             return RedirectToAction("ActorRoleList", "Admin");
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: ActorRoles/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
