@@ -91,7 +91,10 @@ namespace CinemaSystem.Controllers
             foreach (var item in movieComments)
             {
                 var user= await _userManager.FindByIdAsync(item.CommentUserId);
-                item.UserName = user.Name+" "+user.Surname;
+            
+                    item.UserName = user.Name + " " + user.Surname;
+               
+               
             }
 
 

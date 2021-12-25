@@ -40,7 +40,15 @@ namespace CinemaSystem
          
        
 
-            services.AddDefaultIdentity<Customer>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<Customer>(options => {
+                options.SignIn.RequireConfirmedAccount = true;
+                options.Password.RequiredLength = 2;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireDigit = false;
+
+            })
                 .AddRoles<CustomerRole>().AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
 

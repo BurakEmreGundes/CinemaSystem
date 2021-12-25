@@ -17,7 +17,7 @@ namespace WebAPI.MovieData
         }
         public void  Add(Movie movie)
         {
-            _context.Movies.Add(movie);
+            _context.Add(movie);
             _context.SaveChanges();
         }
 
@@ -25,6 +25,7 @@ namespace WebAPI.MovieData
         {
             var movieForDelete = _context.Movies.SingleOrDefault(x=>x.Id==id);
             _context.Remove(movieForDelete);
+            _context.SaveChanges();
         }
 
         public List<Movie> GetAll()
@@ -39,7 +40,47 @@ namespace WebAPI.MovieData
 
         public void Update(Movie movie)
         {
-            
+            var entity = _context.Movies.SingleOrDefault(x => x.Id == movie.Id);
+
+            if (movie.MovieName == null)
+            {
+                movie.MovieName = entity.MovieName;
+            }
+            if (movie.IMDB_Puan == null)
+            {
+                movie.IMDB_Puan = entity.IMDB_Puan;
+            }
+            if (movie.LanguageId == null)
+            {
+                movie.LanguageId = entity.LanguageId;
+            }
+            if (movie.CategoryId == null)
+            {
+                movie.CategoryId = entity.CategoryId;
+            }
+            if (movie.Poster == null)
+            {
+                movie.Poster = entity.Poster;
+            }
+            if (movie.Subject == null)
+            {
+                movie.Subject = entity.Subject;
+            }
+            if (movie.Time == null)
+            {
+                movie.Time = entity.Time;
+            }
+            if (movie.Year == null)
+            {
+                movie.Year = entity.Year;
+            }
+            if (movie.Fragment == null)
+            {
+                movie.Fragment = entity.Fragment;
+            }
+
+            _context.Entry(entity).CurrentValues.SetValues(movie);
+            _context.SaveChanges();
         }
     }
 }

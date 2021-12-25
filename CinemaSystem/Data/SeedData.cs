@@ -17,29 +17,28 @@ namespace CinemaSystem.Data
 
             using (var context = new ApplicationDbContext(serviceProvider.GetRequiredService<DbContextOptions<ApplicationDbContext>>()))
             {
-
+                var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
                 var userManager = serviceProvider.GetRequiredService<UserManager<Customer>>();
 
-                var admin = new Customer { UserName = "admin@gmail.com", Email = "admin@gmail.com", EmailConfirmed = true };
-                await userManager.CreateAsync(admin, "135713579Bg-");
 
                 var normalUser = new Customer { UserName = "normal@gmail.com", Email = "normal@gmail.com", EmailConfirmed = true };
-                await userManager.CreateAsync(normalUser, "135713579Bg-");
+                await userManager.CreateAsync(normalUser, "123");
+
+                var student = new Customer { UserName = "b191210013@sakarya.edu.tr", Email = "b191210013@sakarya.edu.tr",EmailConfirmed = true };
+                await userManager.CreateAsync(student, "123");
+
 
 
                 var roleManager = serviceProvider.GetRequiredService<RoleManager<CustomerRole>>();
                 await roleManager.CreateAsync(new CustomerRole { Name = "Admin" });
                 await roleManager.CreateAsync(new CustomerRole { Name = "NormalUser" });
 
-                await userManager.AddToRoleAsync(admin, "Admin");
+
+
+                await userManager.AddToRoleAsync(student, "Admin");
                 await userManager.AddToRoleAsync(normalUser, "NormalUser");
 
 
-
-
-
-
-                var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
                 logger.LogInformation("Çekirdek veriler başarıyla yazıldı.");
             };
         }
