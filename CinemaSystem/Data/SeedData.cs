@@ -33,14 +33,19 @@ namespace CinemaSystem.Data
                 await roleManager.CreateAsync(new CustomerRole { Name = "Admin" });
                 await roleManager.CreateAsync(new CustomerRole { Name = "NormalUser" });
 
-              /*  await context.Genders.AddAsync(new Gender { GenderType="Kadın"});
-                await context.Genders.AddAsync(new Gender { GenderType = "Erkek" });
-                await context.Genders.AddAsync(new Gender { GenderType = "Diğer" });
+                /*  await context.Genders.AddAsync(new Gender { GenderType="Kadın"});
+                  await context.Genders.AddAsync(new Gender { GenderType = "Erkek" });
+                  await context.Genders.AddAsync(new Gender { GenderType = "Diğer" });
 
-                await context.Categories.AddAsync(new Category { CategoryName="Komedi" });
-                await context.Categories.AddAsync(new Category { CategoryName="Bilim Kurgu" });
+                  await context.Categories.AddAsync(new Category { CategoryName="Komedi" });
+                  await context.Categories.AddAsync(new Category { CategoryName="Bilim Kurgu" });
 
-                //await context.*/
+                  await context.Provinces.AddAsync(new Province {ProvinceName="İstanbul" });
+
+                  await context.Districts.AddAsync(new District{ Id=34,ProvinceId=1 });
+                  await context.SaveChangesAsync();
+                 */
+
 
 
                 logger.LogInformation("Çekirdek veriler başarıyla yazıldı.");
